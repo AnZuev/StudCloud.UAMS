@@ -1,0 +1,31 @@
+{
+  "name": "studcloud.uams",
+  "version": "1.0.0",
+  "description": "User Account Management Service for StudCloud project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnZuev/StudCloud.UAMS.git"
+  },
+  "keywords": [
+    "StudCloud",
+    "UAMS"
+  ],
+  "author": "AnZuev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnZuev/StudCloud.UAMS/issues"
+  },
+  "homepage": "https://github.com/AnZuev/StudCloud.UAMS#readme",
+  "dependencies": {
+    "@anzuev/studcloud.datamodels": "^0.3.0",
+    "@anzuev/studcloud.errors": "^0.2.0",
+    "log4js": "^0.6.37",
+    "mongoose": "^4.5.2",
+    "nconf": "^0.8.4",
+    "q": "^1.4.1"
+  }
+}
