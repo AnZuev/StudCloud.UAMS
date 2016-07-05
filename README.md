@@ -11,6 +11,9 @@
     * [~changeName(newName)](#module_User..changeName)
     * [~changeSurname(newSurname)](#module_User..changeSurname)
     * [~saveUser()](#module_User..saveUser) ⇒ <code>user</code>
+    * [~checkPassword(password)](#module_User..checkPassword) ⇒ <code>boolean</code>
+    * [~getAuthLevel()](#module_User..getAuthLevel) ⇒ <code>enum</code>
+    * [~isInGroup(group)](#module_User..isInGroup) ⇒ <code>boolean</code>
     * [~requestMailConfirmation()](#module_User..requestMailConfirmation) ⇒ <code>string</code>
     * [~confirmMail(key)](#module_User..confirmMail) ⇒ <code>boolean</code>
     * [~requestMobileConfirmation()](#module_User..requestMobileConfirmation) ⇒ <code>string</code>
@@ -160,6 +163,37 @@
 - <code>DbError</code> 500, ошибка базы данных
 
 **this**: <code>{User}</code>  
+<a name="module_User..checkPassword"></a>
+
+### User~checkPassword(password) ⇒ <code>boolean</code>
+Check password
+
+**Kind**: inner method of <code>[User](#module_User)</code>  
+**Returns**: <code>boolean</code> - . true - пароль верен, false - пароль неверен  
+
+| Param | Description |
+| --- | --- |
+| password | пароль для проверки |
+
+<a name="module_User..getAuthLevel"></a>
+
+### User~getAuthLevel() ⇒ <code>enum</code>
+Получение уровня авторизации
+
+**Kind**: inner method of <code>[User](#module_User)</code>  
+**Returns**: <code>enum</code> - - 1, 2, 3, 4  
+<a name="module_User..isInGroup"></a>
+
+### User~isInGroup(group) ⇒ <code>boolean</code>
+Пользователь принадлежит группе?
+
+**Kind**: inner method of <code>[User](#module_User)</code>  
+**Returns**: <code>boolean</code> - , true - принадлежит, false - не принадлежит  
+
+| Param | Description |
+| --- | --- |
+| group | группа |
+
 <a name="module_User..requestMailConfirmation"></a>
 
 ### User~requestMailConfirmation() ⇒ <code>string</code>
@@ -650,4 +684,5 @@
 | Param | Description |
 | --- | --- |
 | userId | идентификатор пользователя |
+
 

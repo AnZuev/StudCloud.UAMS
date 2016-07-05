@@ -66,3 +66,42 @@ User.statics.removeUser = function(userId){
 
 	return deffer.promise;
 };
+
+
+/**
+ * Check password
+ * @param password - пароль для проверки
+ * @returns {boolean}. true - пароль верен, false - пароль неверен
+ */
+function checkPassword (password){
+	return (this.encryptPassword(password) === this.auth.hashed_password);
+};
+User.methods.checkPassword = checkPassword;
+
+
+/**
+ * Получение уровня авторизации
+ * @returns {enum} - 1, 2, 3, 4
+ */
+function getAuthLevel(){
+	if(this.authActions.documentSubmit.done){
+		return 4;
+	}else if(this.authActions.mobileSubmit.done){
+		return 3;
+	}else if(this.authActions.mailSubmit.done){
+		return 2;
+	}else{
+		return 1;
+	}
+};
+User.methods.getAuthLevel = getAuthLevel;
+
+/**
+ * Пользователь принадлежит группе?
+ * @param group - группа
+ * @returns {boolean}, true - принадлежит, false - не принадлежит
+ */
+function isInGroup(group){
+	return (this.pubInform.group == group);
+};
+User.methods.isInGroup = isInGroup;
