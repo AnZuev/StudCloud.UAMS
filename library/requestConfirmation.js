@@ -8,22 +8,27 @@ let Util = require('util'),
 	Crypto = require("crypto");
 
 /**
- *
- * @returns {string|String|*}
+ * @type {exports|module.exports}
  */
-User.methods.requestMailConfirmation = function(){
+/**
+ * Запрос создания ключа для подтверждения почты
+ * @returns {string} Новый ключ
+ */
+function requestMailConfirmation(){
 	let key = Crypto.createHmac('sha1', Math.random() + "").update(this.auth.mail).digest("hex").toString();
 	this.authActions.mailSubmit.key = key;
 	return key;
 };
+User.methods.requestMailConfirmation = requestMailConfirmation
 
 
 /**
- *
- * @param key
- * @returns {boolean}
+ * Подтверждение почты
+ * @param key - ключ для подтверждения(длина больше 0)
+ * @throws {ValidationError} - ключ не может быть пустым
+ * @returns {boolean} true - почта подтверждена, false - почта не подтверждена
  */
-User.methods.confirmMail = function(key){
+function confirmMail(key){
 	if(key.length == 0) throw new ValidationError(400, 'Key can not be empty');
 	if(key == this.authActions.mailSubmit.key){
 		this.authActions.mailSubmit.key = '';
@@ -33,24 +38,27 @@ User.methods.confirmMail = function(key){
 		return false;
 	}
 };
+User.methods.confirmMail = confirmMail;
 
 
 /**
- *
- * @returns {string|String|*}
+ * Запрос ключа для подтверждения номера телефона
+ * @returns {string} - ключ
  */
-User.methods.requestMobileConfirmation = function(){
-	var key = Math.random() * 90000 + 10000;
+function requestMobileConfirmation(){
+	var key = (Math.random() * 90000 + 10000).toString();
 	this.authActions.mobileSubmit.key = key;
 	return key;
 };
+User.methods.requestMobileConfirmation = requestMobileConfirmation;
 
 /**
- *
- * @param key
- * @returns {boolean}
+ * Подтверждение мобильного телефона
+ * @param key - ключ для подтверждения(длина больше 0)
+ * @throws {ValidationError} 400, ключ не может быть пустым
+ * @returns {boolean} true - номер телефона подтвержден, false - номер телефона не подтвержден
  */
-User.methods.confirmMobile = function(key){
+function confirmMobile(key){
 	if(key.length == 0) throw new ValidationError(400, 'Key can not be empty');
 	if(key == this.authActions.mobileSubmit.key){
 		this.authActions.mobileSubmit.key = '';
@@ -60,25 +68,30 @@ User.methods.confirmMobile = function(key){
 		return false;
 	}
 };
+User.methods.confirmMobile = confirmMobile;
 
 
 /**
- * request password change(if mail activated - generate key for password change, otherwise - ValidationError)
+ * Запрос ключа для смены пароля
+ * @throws {ValidationError} 405, Для смены пароля необходимо, чтобы почта была подтверждена
  */
-User.methods.requestPasswordChange = function(){
+function requestPasswordChange(){
 	if(!this.authActions.mailSubmit.done) {
 		throw new ValidationError(405, "Password change is allowed only for users with confirmed mail");
 	}
 	let key = Crypto.createHmac('sha1', Math.random() + "").update(this.auth.mail).digest("hex").toString();
 	this.authActions.changePassword.key = key;
+	return key;
 };
+User.methods.requestPasswordChange = requestPasswordChange;
 
 /**
- *
- * @param key
+ * Подтверждение смены пароля
+ * @param key - ключ для подветржения
+ * @throws {ValidationError} 400, ключ не может быть пустым
  * @returns {boolean}
  */
-User.methods.confirmPasswordToken = function(key){
+function confirmPasswordToken(key){
 	if(key.length == 0){
 		throw new ValidationError(400, 'Key can not be empty');
 	}
@@ -89,5 +102,5 @@ User.methods.confirmPasswordToken = function(key){
 		return false;
 	}
 };
-
+User.methods.confirmPasswordToken = confirmPasswordToken;
 

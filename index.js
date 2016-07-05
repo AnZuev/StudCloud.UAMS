@@ -1,8 +1,12 @@
+/**
+ * @module UAMS
+ */
+
 'use strict';
 require('./libs/logger');
-/*let User = require('./library'),
+let User = require('./library'),
 	connection = require("./libs/connections").users,
-	Mongoose = require("mongoose");*/
+	Mongoose = require("mongoose");
 
 
 let ValidationError = require("@anzuev/studcloud.errors").ValidationError;

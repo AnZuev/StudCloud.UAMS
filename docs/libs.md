@@ -30,7 +30,7 @@
 
 <a name="UAMS+init"></a>
 
-### UAMS.init()
+### uamS.init()
 Инициализация модуля. Здесь проверяем соединение к базе данных.
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -40,7 +40,7 @@
 
 <a name="UAMS+getUserById"></a>
 
-### UAMS.getUserById(id) ⇒ <code>user</code>
+### uamS.getUserById(id) ⇒ <code>user</code>
 Получение пользователя по id
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -57,7 +57,7 @@
 
 <a name="UAMS+getUserByMail"></a>
 
-### UAMS.getUserByMail(mail) ⇒ <code>user</code>
+### uamS.getUserByMail(mail) ⇒ <code>user</code>
 Получение пользователя по почте
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -74,7 +74,7 @@
 
 <a name="UAMS+getUserByPhone"></a>
 
-### UAMS.getUserByPhone(phone) ⇒ <code>user</code>
+### uamS.getUserByPhone(phone) ⇒ <code>user</code>
 Получение пользователя по номеру телефона
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -91,7 +91,7 @@
 
 <a name="UAMS+getUsersByKeyAndContext"></a>
 
-### UAMS.getUsersByKeyAndContext(key, context) ⇒
+### uamS.getUsersByKeyAndContext(key, context) ⇒
 Поиск пользователей по ключу и контексту.
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -109,7 +109,7 @@
 
 <a name="UAMS+getUsersByTwoKeysAndContext"></a>
 
-### UAMS.getUsersByTwoKeysAndContext(key1, key2, context) ⇒
+### uamS.getUsersByTwoKeysAndContext(key1, key2, context) ⇒
 Поиск пользователей по двум ключам и контексту
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -128,7 +128,7 @@
 
 <a name="UAMS+getUsersByUniversity"></a>
 
-### UAMS.getUsersByUniversity(university) ⇒
+### uamS.getUsersByUniversity(university) ⇒
 Поиск пользователей по университету
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -145,7 +145,7 @@
 
 <a name="UAMS+getUsersByFaculty"></a>
 
-### UAMS.getUsersByFaculty(faculty) ⇒
+### uamS.getUsersByFaculty(faculty) ⇒
 Поиск пользователей по факультету
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -162,7 +162,7 @@
 
 <a name="UAMS+getUsersByGroup"></a>
 
-### UAMS.getUsersByGroup(university, faculty, group) ⇒
+### uamS.getUsersByGroup(university, faculty, group) ⇒
 Поиск пользователей по группе
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -181,7 +181,7 @@
 
 <a name="UAMS+getUsersByYear"></a>
 
-### UAMS.getUsersByYear(year) ⇒
+### uamS.getUsersByYear(year) ⇒
 Поиск пользователей по курсу
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -198,7 +198,7 @@
 
 <a name="UAMS+getUsersByMailConfirmation"></a>
 
-### UAMS.getUsersByMailConfirmation(skip) ⇒
+### uamS.getUsersByMailConfirmation(skip) ⇒
 Поиск пользователей с подтвержденной почтой
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -216,7 +216,7 @@
 
 <a name="UAMS+countUsersByMailConfirmation"></a>
 
-### UAMS.countUsersByMailConfirmation() ⇒ <code>number</code>
+### uamS.countUsersByMailConfirmation() ⇒ <code>number</code>
 Подсчет количества пользователей с подтвержденной почтой
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -227,7 +227,7 @@
 
 <a name="UAMS+getUsersByMobileConfirmation"></a>
 
-### UAMS.getUsersByMobileConfirmation(skip) ⇒
+### uamS.getUsersByMobileConfirmation(skip) ⇒
 Поиск пользователей с подтвержденным номером телефона
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -245,7 +245,7 @@
 
 <a name="UAMS+countUsersByMobileConfirmation"></a>
 
-### UAMS.countUsersByMobileConfirmation() ⇒ <code>number</code>
+### uamS.countUsersByMobileConfirmation() ⇒ <code>number</code>
 Подсчет количества пользователей с подтвержденным номером телефона
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -256,7 +256,7 @@
 
 <a name="UAMS+countNewUsersToday"></a>
 
-### UAMS.countNewUsersToday() ⇒ <code>number</code>
+### uamS.countNewUsersToday() ⇒ <code>number</code>
 Подсчет новых пользователей за сегодня
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -267,7 +267,7 @@
 
 <a name="UAMS+countNewUsersThisWeek"></a>
 
-### UAMS.countNewUsersThisWeek() ⇒ <code>number</code>
+### uamS.countNewUsersThisWeek() ⇒ <code>number</code>
 Подсчет новых пользователей за неделю
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -278,7 +278,7 @@
 
 <a name="UAMS+countNewUsersThisMonth"></a>
 
-### UAMS.countNewUsersThisMonth() ⇒ <code>number</code>
+### uamS.countNewUsersThisMonth() ⇒ <code>number</code>
 Подсчет новых пользователей за месяц
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -289,7 +289,7 @@
 
 <a name="UAMS+countNewUsersThisYear"></a>
 
-### UAMS.countNewUsersThisYear() ⇒ <code>number</code>
+### uamS.countNewUsersThisYear() ⇒ <code>number</code>
 Подсчет новых пользователей за год
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -300,7 +300,7 @@
 
 <a name="UAMS+countAllUsers"></a>
 
-### UAMS.countAllUsers() ⇒ <code>number</code>
+### uamS.countAllUsers() ⇒ <code>number</code>
 Подсчет новых пользователей за все время
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -311,7 +311,7 @@
 
 <a name="UAMS+createUser"></a>
 
-### UAMS.createUser(authData) ⇒ <code>user</code>
+### uamS.createUser(authData) ⇒ <code>user</code>
 Создание нового пользователя
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -340,7 +340,7 @@
 
 <a name="UAMS+blockUser"></a>
 
-### UAMS.blockUser(userId) ⇒ <code>boolean</code>
+### uamS.blockUser(userId) ⇒ <code>boolean</code>
 Блокировка юзера
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  
@@ -357,7 +357,7 @@
 
 <a name="UAMS+removeUser"></a>
 
-### UAMS.removeUser(userId) ⇒ <code>boolean</code>
+### uamS.removeUser(userId) ⇒ <code>boolean</code>
 Удаление пользователя по идентификатору
 
 **Kind**: instance method of <code>[UAMS](#UAMS)</code>  

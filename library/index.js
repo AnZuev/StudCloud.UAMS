@@ -14,6 +14,8 @@ require('./changePublicInfo');
 
 require('./requestConfirmation');
 
+require('./social');
+
 require('./general');
 
 require('./libs');

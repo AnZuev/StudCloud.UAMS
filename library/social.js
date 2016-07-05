@@ -1,19 +1,28 @@
 "use strict";
 
+
 let Util = require('util'),
 	DbError = require("@anzuev/studcloud.errors").DbError,
 	Q = require('q'),
-	User = require('./User');
+	User = require("@anzuev/studcloud.datamodels").User,
 	Mongoose = require('mongoose');
 
 
 /**
- *
- * @param key
- * @param context
- * @returns {*|promise}
+ * @type {exports|module.exports}
  */
-User.methods.getContactsByOneKey = function(key, context){
+
+/**
+ * Получение контактов пользователя по ключу и контексту
+ *
+ * @param key - ключ(регулярное выражение)
+ * @param context - объект. Поддерживаемые значения - university, faculty, year, group
+ * @returns {promise}
+ * @fulfil {user} - объект вида user
+ * @reject {DbError} 204, не найдено контактов
+ * @reject {DbError} 500, ошибка базы данных
+ */
+function getContactsByOneKey(key, context){
 	let deffer = Q.defer();
 	let query = {
 		$or:[
@@ -35,17 +44,22 @@ User.methods.getContactsByOneKey = function(key, context){
 		if(err) deffer.reject(new DbError(err, 500));
 	});
 	return deffer.promise;
-};
+}
+User.methods.getContactsByOneKey = getContactsByOneKey;
 
 
 /**
+ * Получение контактов пользователя по двум ключам и контексту
  *
- * @param key1
- * @param key2
- * @param context
- * @returns {*|promise}
+ * @param key1 - ключ(регулярное выражение)
+ * @param key2 - ключ(регулярное выражение)
+ * @param context - объект. Поддерживаемые значения - university, faculty, year, group
+ * @returns {promise}
+ * @fulfil {user} - объект вида user
+ * @reject {DbError} 204, не найдено контактов
+ * @reject {DbError} 500, ошибка базы данных
  */
-User.methods.getContactsByTwoKeys = function(key1, key2, context){
+function getContactsByTwoKeys(key1, key2, context){
 	let deffer = Q.defer();
 
 	let query = {
@@ -79,14 +93,19 @@ User.methods.getContactsByTwoKeys = function(key1, key2, context){
 	});
 	return deffer.promise;
 };
+User.methods.getContactsByTwoKeys = getContactsByTwoKeys;
 
 
 /**
+ * Получение контактов пользователя по контексту
  *
- * @param context
- * @returns {*|promise}
+ * @param context - объект. Поддерживаемые значения - university, faculty, year, group
+ * @returns {promise}
+ * @fulfil {user} - объект вида user
+ * @reject {DbError} 204, не найдено контактов
+ * @reject {DbError} 500, ошибка базы данных
  */
-User.methods.getContactsByContext = function(context){
+function getContactsByContext(context){
 	let deffer = Q.defer();
 
 	let query = {
@@ -106,15 +125,11 @@ User.methods.getContactsByContext = function(context){
 	});
 	return deffer.promise;
 };
+User.methods.getContactsByContext = getContactsByContext;
 
 
 
-/**
- *
- * @param query
- * @param context
- * @returns {*}
- */
+
 function fillQueryWithContext(query, context){
 	if(context.university){
 		query["pubInform.university"] = context.university;

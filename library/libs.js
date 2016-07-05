@@ -7,9 +7,16 @@ let Util = require('util'),
 	Mongoose = require('mongoose');
 
 /**
- *
+ * @type {exports|module.exports}
  */
-User.methods.saveUser = function*(){
+/**
+ * @this {User}
+ * Безопасное сохранение пользователя. В случае ошибки пытается сохранить еще раз. Максимальное
+ * количество попыток - 5
+ * @throws {DbError} 500, ошибка базы данных
+ * @returns {user} все прошло хорошо, вернулся объект типа user
+ */
+function* saveUser (){
 	let errCounter = 5;
 	let user;
 	while(errCounter > 0){
@@ -22,30 +29,23 @@ User.methods.saveUser = function*(){
 		}
 	}
 	return user;
-};
+}
+User.methods.saveUser = saveUser;
 
-/**
- *
- */
+
 User.methods.block = function(){
 	this.state = "Blocked";
 };
 
-/**
- *
- * @param userId - Schema.Types.ObjectId
- */
+
+
 User.statics.blockUser = function*(userId){
 	let user = yield this.getUserById(userId);
 	user.block();
 	yield* user.saveUser();
 };
 
-/**
- *
- * @param userId
- * @returns {*|promise}
- */
+
 User.statics.removeUser = function(userId){
 	let deffer = Q.defer();
 	let promise = this.remove({_id: userId}).exec();
