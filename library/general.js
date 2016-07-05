@@ -8,6 +8,20 @@ let Util = require('util'),
 	Mongoose = require('mongoose'),
 	Crypto = require("crypto");
 
+const logger = require('../libs/logger');
+
+
+User.methods.encryptPassword = function(password){
+	return Crypto.createHmac('sha1',this.auth.salt).update(password + "").digest("hex");
+};
+
+User.virtual('auth.password')
+	.set(function(password) {
+		this.auth._plainPassword = password;
+		this.auth.salt = Math.random() + "";
+		this.auth.hashed_password = this.encryptPassword(password);
+	})
+	.get(function() { return this._plainPassword;});
 
 User.statics.createUser = function*(authData){
 	let User = this;

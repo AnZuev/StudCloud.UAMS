@@ -7,6 +7,9 @@ let Util = require('util'),
 	User = require("@anzuev/studcloud.datamodels").User,
 	Mongoose = require('mongoose');
 
+const logger = require('../libs/logger');
+
+
 /**
  * @module User
  */

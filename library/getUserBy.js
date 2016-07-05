@@ -5,6 +5,9 @@ let Util = require('util'),
 	Q = require('q'),
 	User = require("@anzuev/studcloud.datamodels").User;
 
+
+const logger = require('../libs/logger');
+
 /**
  * Get user by id
  * @param id
@@ -20,6 +23,7 @@ User.statics.getUserById = function(id){
 			deffer.reject(new DbError(null, 404, Util.format('No user found by id %s', id)));
 		}
 	}).catch(function(err){
+		logger.error(err);
 		if(err) deffer.reject(new DbError(err, 500));
 	});
 
@@ -41,6 +45,7 @@ User.statics.getUserByMail = function (mail){
 			deffer.reject(new DbError(null, 404, Util.format('No user found by mail %s', mail)));
 		}
 	}).catch(function(err){
+		logger.error(err);
 		if(err) deffer.reject(new DbError(err, 500));
 	});
 
@@ -63,6 +68,7 @@ User.statics.getUserByPhone = function(phone){
 			deffer.reject(new DbError(null, 404, Util.format('No user found by phone %s', phone)));
 		}
 	}).catch(function(err){
+		logger.error(err);
 		if(err) deffer.reject(new DbError(err, 500));
 	});
 
