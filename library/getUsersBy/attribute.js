@@ -60,8 +60,8 @@ User.statics.getUsersByUniversity = function(university){
 	let deffer = Q.defer();
 	var promise = this.find({"pubInform.university": university}).exec();
 
-	promise.then(function(user){
-		if(user.length) deffer.fulfill(user);
+	promise.then(function(users){
+		if(users.length) deffer.fulfill(users);
 		else {
 			deffer.reject(new DbError(null, 204, Util.format('No users found by university %s', university)));
 		}

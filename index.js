@@ -1,55 +1,60 @@
 'use strict';
-let User = require('./library'),
+require('./libs/logger');
+/*let User = require('./library'),
 	connection = require("./libs/connections").users,
-	Mongoose = require("mongoose");
+	Mongoose = require("mongoose");*/
 
 
 let ValidationError = require("@anzuev/studcloud.errors").ValidationError;
-require('./libs/logger');
+let DbError = require("@anzuev/studcloud.errors").DbError;
 
 
+/**
+ *
+ * @constructor
+ * @this {UAMS}
+ *
+ */
 function UAMS(){
 	this.init();
 }
 
 /**
- * @summary Инициализация модуля
+ *  Инициализация модуля. Здесь проверяем соединение к базе данных.
+ *  @throws {Error}- не указано соединение для коллекции 'users'
  *
  */
 UAMS.prototype.init = function(){
 	if(!connection){
-		throw new Error("No connection specified for 'users' collection");
+		let err = new Error("No connection specified for 'users' collection");
+		logger.error(err);
+		throw err;
 	}else{
 		this._Users = connection.model("User", User);
 	}
 };
-/**
- *
- * @param user -
- * @returns {*}
- */
-UAMS.prototype.saveUser = function* (user){
-	if(user instanceof User){
-		return yield user.saveUser();
-	}else{
-		throw new ValidationError(400, "Object passed is not instance of User");
-	}
-};
+
 
 
 /**
- *
- * @param id
- * @returns {*}
+ * Получение пользователя по id
+ * @param id - идентификатор пользователя
+ * @returns {user} объект типа user
+ * @throws {DbError} - 404, пользователь не найден
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.getUserById = function*(id){
+	id = Mongoose.Types.ObjectId(id);
 	return yield this._Users.getUserById(id);
 };
 
+
 /**
- *
- * @param mail
- * @returns {*}
+ * Получение пользователя по почте
+ * @param mail - почтовый адрес
+ * @returns {user} объект типа user
+ * @throws {DbError} - 404, пользователь не найден
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.getUserByMail = function*(mail){
 	return yield this._Users.getUserByMail(mail);
@@ -57,9 +62,11 @@ UAMS.prototype.getUserByMail = function*(mail){
 
 
 /**
- *
- * @param phone
- * @returns {*}
+ * Получение пользователя по номеру телефона
+ * @param phone{string} - номер телефона
+ * @returns {user} объект типа user
+ * @throws {DbError} - 404, пользователь не найден
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.getUserByPhone = function*(phone){
 	return yield this._Users.getUserByPhone(phone);
@@ -67,10 +74,12 @@ UAMS.prototype.getUserByPhone = function*(phone){
 
 
 /**
- *
- * @param key
- * @param context
- * @returns {*}
+ * Поиск пользователей по ключу и контексту.
+ * @param key - регулярное выражение, сгенерированное на основе данных от пользователя.
+ * @param {object} context - контекст поиска. Возможны проверти university(objectId), faculty(objectId), year(number), group(string)
+ * @returns [user] массив из объектов типа user, если хотя бы один пользователь найден
+ * @throws {DbError} - 204, не найдено пользователей, удовлетворяющих условиям
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.getUsersByKeyAndContext = function*(key, context){
 	let query = {
@@ -98,11 +107,13 @@ UAMS.prototype.getUsersByKeyAndContext = function*(key, context){
 
 
 /**
- *
- * @param key1
- * @param key2
- * @param context
- * @returns {*}
+ * Поиск пользователей по двум ключам и контексту
+ * @param key1 - регулярное выражение, сгенерированное на основе данных от пользователя.
+ * @param key2 - регулярное выражение, сгенерированное на основе данных от пользователя.
+ * @param {object} context - контекст поиска. Возможны проверти university(objectId), faculty(objectId), year(number), group(string)
+ * @returns [user] массив из объектов типа user, если хотя бы один пользователь найден
+ * @throws {DbError} - 204, не найдено пользователей, удовлетворяющих условиям
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.getUsersByTwoKeysAndContext = function*(key1, key2, context){
 	let query =
@@ -138,23 +149,27 @@ UAMS.prototype.getUsersByTwoKeysAndContext = function*(key1, key2, context){
 
 	return yield this._Users.getUsersByTwoKeys(query);
 }
-module.exports = new UAMS();
 
 
 /**
- *
- * @param university
- * @returns {*}
+ * Поиск пользователей по университету
+ * @param {Mongoose.Types.ObjectId} university - id университета
+ * @returns [user] массив из объектов типа user, если хотя бы один пользователь найден
+ * @throws {DbError} - 204, не найдено пользователей, удовлетворяющих условиям
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.getUsersByUniversity = function*(university){
 	return yield this._Users.getUsersByUniversity(university);
 };
 
 
+
 /**
- *
- * @param faculty
- * @returns {*}
+ * Поиск пользователей по факультету
+ * @param {Mongoose.Types.ObjectId} faculty - id факультета
+ * @returns [user] массив из объектов типа user, если хотя бы один пользователь найден
+ * @throws {DbError} - 204, не найдено пользователей, удовлетворяющих условиям
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.getUsersByFaculty = function*(faculty){
 	return yield this._Users.getUsersByFaculty(faculty);
@@ -162,11 +177,13 @@ UAMS.prototype.getUsersByFaculty = function*(faculty){
 
 
 /**
- *
- * @param university - id университета
- * @param faculty - id факультета
- * @param group - группа(string)
- * @returns {*}
+ * Поиск пользователей по группе
+ * @param {Mongoose.Types.ObjectId} university - id университета
+ * @param {Mongoose.Types.ObjectId} faculty - id факультета
+ * @param {Mongoose.Types.ObjectId} group - группа(string)
+ * @returns [user] массив из объектов типа user, если хотя бы один пользователь найден
+ * @throws {DbError} - 204, не найдено пользователей, удовлетворяющих условиям
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.getUsersByGroup = function*(university, faculty, group){
 	let query = {};
@@ -184,54 +201,72 @@ UAMS.prototype.getUsersByGroup = function*(university, faculty, group){
 		query["pubInform.group"] = group;
 	}else{
 		throw new ValidationError(400, "No group specified");
-	};
+	}
 
 	return yield this._Users.getUsersByGroup(query);
 };
 
 /**
- *
- * @param year - курс
- * @returns {*}
+ * Поиск пользователей по курсу
+ * @param {Mongoose.Types.ObjectId} year - год обучения(курс)
+ * @returns [user] массив из объектов типа user, если хотя бы один пользователь найден
+ * @throws {DbError} - 204, не найдено пользователей, удовлетворяющих условиям
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.getUsersByYear = function*(year){
 	return yield this._Users.getUsersByYear(year);
 };
 
+
 /**
- *
- * @param skip
- * @returns {*}
+ * Поиск пользователей с подтвержденной почтой
+ * @param skip - сколько страниц сначала необходимо пропустить. На странице 20 элементов.
+ * @returns [user] массив из объектов типа user, если хотя бы один пользователь найден
+ * @throws ValidationError - 400, параметр skip < 0
+ * @throws {DbError} - 204, не найдено пользователей, удовлетворяющих условиям
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.getUsersByMailConfirmation = function*(skip){
 	return yield this._Users.getUsersByMailConfirmation(skip);
 };
 
+
+/**
+ * Подсчет количества пользователей с подтвержденной почтой
+ * @returns {number} Количество пользователей
+ * @throws {DbError} - 500, ошибка базы данных
+ */
 UAMS.prototype.countUsersByMailConfirmation = function*(){
 	return yield this._Users.countUsersByMailConfirmation();
 };
 
 /**
- *
- * @param skip
- * @returns {*}
+ * Поиск пользователей с подтвержденным номером телефона
+ * @param skip - сколько страниц сначала необходимо пропустить. На странице 20 элементов.
+ * @returns [user] массив из объектов типа user, если хотя бы один пользователь найден
+ * @throws ValidationError - 400, параметр skip < 0
+ * @throws {DbError} - 204, не найдено пользователей, удовлетворяющих условиям
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.getUsersByMobileConfirmation = function*(skip){
 	return yield this._Users.getUsersByMobileConfirmation(skip);
 };
 
 /**
- *
- * @param skip
- * @returns {*}
+ * Подсчет количества пользователей с подтвержденным номером телефона
+ * @returns {number} Количество пользователей
+ * @throws {DbError} - 500, ошибка базы данных
  */
-UAMS.prototype.getUsersByMailConfirmation = function*(skip){
-	return yield this._Users.getUsersByMailConfirmation(skip);
+UAMS.prototype.countUsersByMobileConfirmation = function*(){
+	return yield this._Users.countUsersByMobileConfirmation();
 };
 
+
+
 /**
- *
- * @returns {*}
+ * Подсчет новых пользователей за сегодня
+ * @returns {number} Количество пользователей
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.countNewUsersToday = function*(){
 	let now = new Date();
@@ -240,8 +275,9 @@ UAMS.prototype.countNewUsersToday = function*(){
 };
 
 /**
- *
- * @returns {*}
+ * Подсчет новых пользователей за неделю
+ * @returns {number} Количество пользователей
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.countNewUsersThisWeek = function*(){
 	let now = new Date();
@@ -250,8 +286,9 @@ UAMS.prototype.countNewUsersThisWeek = function*(){
 };
 
 /**
- *
- * @returns {*}
+ * Подсчет новых пользователей за месяц
+ * @returns {number} Количество пользователей
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.countNewUsersThisMonth = function*(){
 	let now = new Date();
@@ -261,8 +298,9 @@ UAMS.prototype.countNewUsersThisMonth = function*(){
 
 
 /**
- *
- * @returns {*}
+ * Подсчет новых пользователей за год
+ * @returns {number} Количество пользователей
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.countNewUsersThisYear = function*(){
 	let now = new Date();
@@ -271,37 +309,50 @@ UAMS.prototype.countNewUsersThisYear = function*(){
 };
 
 /**
- * count all users
- * @returns {*}
+ * Подсчет новых пользователей за все время
+ * @returns {number}Количество пользователей
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.countAllUsers = function*(){
 	return yield this._Users.countAllUsers();
 };
 
 /**
- *
- * @param authData
- * @property mail
- * @property password
- * @property name
- * @property surname
- * @returns {*}
+ * Создание нового пользователя
+ * @param authData - данные для авторизации. Пропирти можно увидеть в пункте properties
+ * @property mail - почтовый адрес
+ * @property password - пароль
+ * @property name - имя пользователя
+ * @property surname - пароль
+ * @returns {user} объект типа user, если все прошло успешно
+ * @throws {ValidationError} 400, Mail is incorrect - длина почты меньше 5
+ * @throws {ValidationError} 400, Password is too weak - длина пароля меньше 5
+ * @throws {ValidationError} 400, Incorrect personal info - имя или фамилия не переданы
+ * @throws {AuthError} 400, mail {mail} already in use - почта уже кем-то используется
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.createUser = function*(authData){
 	if(authData.mail.length < 5) throw new ValidationError(400, 'Mail is incorrect');
 	if(authData.password.length < 5) throw new ValidationError(400, 'Password is too weak');
 	if(!(authData.name && authData.surname)) throw new ValidationError(400, 'Incorrect personal info');
 
-	let user = yield* this._Users.createUser(authData);
+	try{
+		let user = yield* this._Users.createUser(authData);
+	}catch(err){
+		logger.warn(err);
+		throw err;
+	}
 	logger.trace('new user with mail added %s', authData.mail);
 	return user;
 };
 
 
 /**
- *
- * @param userId
- * @returns {boolean}
+ * Блокировка юзера
+ * @param userId - идентификатор пользователя
+ * @returns {boolean} true - все прошло хорошо
+ * @throws {DbError} - 404, пользователь не найден
+ * @throws {DbError} - 500, ошибка базы данных
  */
 UAMS.prototype.blockUser = function*(userId){
 	userId = Mongoose.Types.ObjectId(userId);
@@ -310,13 +361,23 @@ UAMS.prototype.blockUser = function*(userId){
 };
 
 /**
+ * Удаление пользователя по идентификатору
+ * @param userId - идентификатор пользователя
+ * @returns {boolean} true - все прошло хорошо
+ * @throws {DbError} - 400, пользователь не найден
+ * @throws {DbError} - 500, ошибка базы данных
  *
- * @param userId
- * @returns {*}
  */
 UAMS.prototype.removeUser = function*(userId){
 	userId = Mongoose.Types.ObjectId(userId);
-	return yield this._Users.removeUser(userId);
+	try{
+		return yield this._Users.removeUser(userId);
+	}catch(err){
+		logger.error(err);
+		throw err;
+	}
 };
 
+
+module.exports = new UAMS();
 

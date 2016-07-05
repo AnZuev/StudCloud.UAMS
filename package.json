@@ -27,5 +27,11 @@
     "mongoose": "^4.5.2",
     "nconf": "^0.8.4",
     "q": "^1.4.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-documentation": "^2.2.0",
+    "gulp-jsdoc": "^0.1.5",
+    "gulp-markdox": "^0.1.1"
   }
 }

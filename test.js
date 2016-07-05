@@ -32,7 +32,7 @@ Q.async(function*(){
 		console.log(user);
 		yield* user.saveUser();
 	}catch(err){
-		console.log(err);
+		//console.log(err);
 	}
 })().done();
 

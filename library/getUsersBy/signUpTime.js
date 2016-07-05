@@ -19,7 +19,7 @@ User.statics.countUserBySignUpTime = function(age){
 			defer.fulfill(counter);
 		})
 		.catch(function(err){
-			defer.reject(err);
+			defer.reject(new DbError(err, 500));
 		});
 	return defer.promise;
 };
@@ -32,7 +32,7 @@ User.statics.countAllUsers = function(){
 			defer.fulfill(counter);
 		})
 		.catch(function(err){
-			defer.reject(err);
+			defer.reject(new DbError(err, 500));
 		});
 	return defer.promise;
 };

@@ -1,10 +1,11 @@
 'use strict';
 
-var log4js = require('log4js');
+let log4js = require('log4js'),
+	config = require('../config');
 
 log4js.configure({
 	appenders: [
-		{ type: 'file', filename: 'logs/UAMS.log', category: 'UAMS' },
+		{ type: 'file', filename: config.get("UAMS:path") || 'logs/UAMS.log', category: config.get("UAMS:label") ||'UAMS' },
 		{ type: 'console' }
 	]
 });
