@@ -343,7 +343,7 @@ Check password
 
 <a name="module_UAMS..UAMS+init"></a>
 
-#### UAMS.init()
+#### uamS.init()
 Инициализация модуля. Здесь проверяем соединение к базе данных.
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -353,7 +353,7 @@ Check password
 
 <a name="module_UAMS..UAMS+getUserById"></a>
 
-#### UAMS.getUserById(id) ⇒ <code>user</code>
+#### uamS.getUserById(id) ⇒ <code>user</code>
 Получение пользователя по id
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -370,7 +370,7 @@ Check password
 
 <a name="module_UAMS..UAMS+getUserByMail"></a>
 
-#### UAMS.getUserByMail(mail) ⇒ <code>user</code>
+#### uamS.getUserByMail(mail) ⇒ <code>user</code>
 Получение пользователя по почте
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -387,7 +387,7 @@ Check password
 
 <a name="module_UAMS..UAMS+getUserByPhone"></a>
 
-#### UAMS.getUserByPhone(phone) ⇒ <code>user</code>
+#### uamS.getUserByPhone(phone) ⇒ <code>user</code>
 Получение пользователя по номеру телефона
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -404,7 +404,7 @@ Check password
 
 <a name="module_UAMS..UAMS+getUsersByKeyAndContext"></a>
 
-#### UAMS.getUsersByKeyAndContext(key, context) ⇒
+#### uamS.getUsersByKeyAndContext(key, context) ⇒
 Поиск пользователей по ключу и контексту.
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -422,7 +422,7 @@ Check password
 
 <a name="module_UAMS..UAMS+getUsersByTwoKeysAndContext"></a>
 
-#### UAMS.getUsersByTwoKeysAndContext(key1, key2, context) ⇒
+#### uamS.getUsersByTwoKeysAndContext(key1, key2, context) ⇒
 Поиск пользователей по двум ключам и контексту
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -441,7 +441,7 @@ Check password
 
 <a name="module_UAMS..UAMS+getUsersByUniversity"></a>
 
-#### UAMS.getUsersByUniversity(university) ⇒
+#### uamS.getUsersByUniversity(university) ⇒
 Поиск пользователей по университету
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -458,7 +458,7 @@ Check password
 
 <a name="module_UAMS..UAMS+getUsersByFaculty"></a>
 
-#### UAMS.getUsersByFaculty(faculty) ⇒
+#### uamS.getUsersByFaculty(faculty) ⇒
 Поиск пользователей по факультету
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -475,7 +475,7 @@ Check password
 
 <a name="module_UAMS..UAMS+getUsersByGroup"></a>
 
-#### UAMS.getUsersByGroup(university, faculty, group) ⇒
+#### uamS.getUsersByGroup(university, faculty, group) ⇒
 Поиск пользователей по группе
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -494,7 +494,7 @@ Check password
 
 <a name="module_UAMS..UAMS+getUsersByYear"></a>
 
-#### UAMS.getUsersByYear(year) ⇒
+#### uamS.getUsersByYear(year) ⇒
 Поиск пользователей по курсу
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -511,7 +511,7 @@ Check password
 
 <a name="module_UAMS..UAMS+getUsersByMailConfirmation"></a>
 
-#### UAMS.getUsersByMailConfirmation(skip) ⇒
+#### uamS.getUsersByMailConfirmation(skip) ⇒
 Поиск пользователей с подтвержденной почтой
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -529,7 +529,7 @@ Check password
 
 <a name="module_UAMS..UAMS+countUsersByMailConfirmation"></a>
 
-#### UAMS.countUsersByMailConfirmation() ⇒ <code>number</code>
+#### uamS.countUsersByMailConfirmation() ⇒ <code>number</code>
 Подсчет количества пользователей с подтвержденной почтой
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -540,7 +540,7 @@ Check password
 
 <a name="module_UAMS..UAMS+getUsersByMobileConfirmation"></a>
 
-#### UAMS.getUsersByMobileConfirmation(skip) ⇒
+#### uamS.getUsersByMobileConfirmation(skip) ⇒
 Поиск пользователей с подтвержденным номером телефона
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -558,7 +558,7 @@ Check password
 
 <a name="module_UAMS..UAMS+countUsersByMobileConfirmation"></a>
 
-#### UAMS.countUsersByMobileConfirmation() ⇒ <code>number</code>
+#### uamS.countUsersByMobileConfirmation() ⇒ <code>number</code>
 Подсчет количества пользователей с подтвержденным номером телефона
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -569,7 +569,7 @@ Check password
 
 <a name="module_UAMS..UAMS+countNewUsersToday"></a>
 
-#### UAMS.countNewUsersToday() ⇒ <code>number</code>
+#### uamS.countNewUsersToday() ⇒ <code>number</code>
 Подсчет новых пользователей за сегодня
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -580,7 +580,7 @@ Check password
 
 <a name="module_UAMS..UAMS+countNewUsersThisWeek"></a>
 
-#### UAMS.countNewUsersThisWeek() ⇒ <code>number</code>
+#### uamS.countNewUsersThisWeek() ⇒ <code>number</code>
 Подсчет новых пользователей за неделю
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -591,7 +591,7 @@ Check password
 
 <a name="module_UAMS..UAMS+countNewUsersThisMonth"></a>
 
-#### UAMS.countNewUsersThisMonth() ⇒ <code>number</code>
+#### uamS.countNewUsersThisMonth() ⇒ <code>number</code>
 Подсчет новых пользователей за месяц
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -602,7 +602,7 @@ Check password
 
 <a name="module_UAMS..UAMS+countNewUsersThisYear"></a>
 
-#### UAMS.countNewUsersThisYear() ⇒ <code>number</code>
+#### uamS.countNewUsersThisYear() ⇒ <code>number</code>
 Подсчет новых пользователей за год
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -613,7 +613,7 @@ Check password
 
 <a name="module_UAMS..UAMS+countAllUsers"></a>
 
-#### UAMS.countAllUsers() ⇒ <code>number</code>
+#### uamS.countAllUsers() ⇒ <code>number</code>
 Подсчет новых пользователей за все время
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -624,7 +624,7 @@ Check password
 
 <a name="module_UAMS..UAMS+createUser"></a>
 
-#### UAMS.createUser(authData) ⇒ <code>user</code>
+#### uamS.createUser(authData) ⇒ <code>user</code>
 Создание нового пользователя
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -653,7 +653,7 @@ Check password
 
 <a name="module_UAMS..UAMS+blockUser"></a>
 
-#### UAMS.blockUser(userId) ⇒ <code>boolean</code>
+#### uamS.blockUser(userId) ⇒ <code>boolean</code>
 Блокировка юзера
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
@@ -670,7 +670,7 @@ Check password
 
 <a name="module_UAMS..UAMS+removeUser"></a>
 
-#### UAMS.removeUser(userId) ⇒ <code>boolean</code>
+#### uamS.removeUser(userId) ⇒ <code>boolean</code>
 Удаление пользователя по идентификатору
 
 **Kind**: instance method of <code>[UAMS](#module_UAMS..UAMS)</code>  
