@@ -6,7 +6,7 @@ var gulpJsdoc2md = require('gulp-jsdoc-to-markdown');
 var concat = require('gulp-concat');
 
 gulp.task('docs', function () {
-	return gulp.src(['../library/*.js', "../index.js"])
+	return gulp.src([ "../index.js", '../library/**/*.js'])
 		.on('data', function(file){
 			console.log(file.path);
 		})

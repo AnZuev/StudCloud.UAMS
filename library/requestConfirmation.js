@@ -11,11 +11,11 @@ const logger = require('../libs/logger');
 
 
 /**
- * @type {exports|module.exports}
- */
-/**
  * Запрос создания ключа для подтверждения почты
  * @returns {string} Новый ключ
+ * @this User
+ * @memberof module:UAMS~User
+ * @instance
  */
 function requestMailConfirmation(){
 	let key = Crypto.createHmac('sha1', Math.random() + "").update(this.auth.mail).digest("hex").toString();
@@ -30,6 +30,9 @@ User.methods.requestMailConfirmation = requestMailConfirmation
  * @param key - ключ для подтверждения(длина больше 0)
  * @throws {ValidationError} - ключ не может быть пустым
  * @returns {boolean} true - почта подтверждена, false - почта не подтверждена
+ * @this User
+ * @memberof module:UAMS~User
+ * @instance
  */
 function confirmMail(key){
 	if(key.length == 0) throw new ValidationError(400, 'Key can not be empty');
@@ -47,6 +50,9 @@ User.methods.confirmMail = confirmMail;
 /**
  * Запрос ключа для подтверждения номера телефона
  * @returns {string} - ключ
+ * @this User
+ * @memberof module:UAMS~User
+ * @instance
  */
 function requestMobileConfirmation(){
 	var key = (Math.random() * 90000 + 10000).toString();
@@ -60,6 +66,9 @@ User.methods.requestMobileConfirmation = requestMobileConfirmation;
  * @param key - ключ для подтверждения(длина больше 0)
  * @throws {ValidationError} 400, ключ не может быть пустым
  * @returns {boolean} true - номер телефона подтвержден, false - номер телефона не подтвержден
+ * @this User
+ * @memberof module:UAMS~User
+ * @instance
  */
 function confirmMobile(key){
 	if(key.length == 0) throw new ValidationError(400, 'Key can not be empty');
@@ -77,6 +86,9 @@ User.methods.confirmMobile = confirmMobile;
 /**
  * Запрос ключа для смены пароля
  * @throws {ValidationError} 405, Для смены пароля необходимо, чтобы почта была подтверждена
+ * @this User
+ * @memberof module:UAMS~User
+ * @instance
  */
 function requestPasswordChange(){
 	if(!this.authActions.mailSubmit.done) {
@@ -92,7 +104,10 @@ User.methods.requestPasswordChange = requestPasswordChange;
  * Подтверждение смены пароля
  * @param key - ключ для подветржения
  * @throws {ValidationError} 400, ключ не может быть пустым
- * @returns {boolean}
+ * @returns {boolean} true - ключ подходит, false - ключ не подходит
+ * @this User
+ * @memberof module:UAMS~User
+ * @instance
  */
 function confirmPasswordToken(key){
 	if(key.length == 0){

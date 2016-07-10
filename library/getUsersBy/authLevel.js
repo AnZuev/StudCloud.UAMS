@@ -11,11 +11,20 @@ let ValidationError = require("@anzuev/studcloud.errors").ValidationError,
 /* константы */
 let perPage = 20;
 
+
 /**
- *
+ * Получение пользователей, у которых подтверждена почта
  * @param skip - сколько пропустить сначала
- * @returns {*|promise}
+ * @throws {ValidationError}, 400 - значение skip не может быть меньше нуля
+ * @returns {promise}
+ * @fulfill {User[]} - массив пользователей
+ * @reject {DbError}, 204 - ничего не найдено
+ * @reject {DbError}, 500 - ошибка базы данных
+ * @memberof module:UAMS~User
+ * @this User
+ * @function getUsersByMailConfirmation
  */
+
 User.statics.getUsersByMailConfirmation = function(skip){
 
 	if(skip < 0) throw new ValidationError(400, '@param skip cannot be less than 0');
@@ -41,9 +50,15 @@ User.statics.getUsersByMailConfirmation = function(skip){
 
 
 /**
+ * Подсчет пользователей с подтвержденной почтой
  *
- * @returns {*|promise}
- */
+ * @returns {promise}
+ * @fulfill {number} - количетсво пользователей
+ * @reject {DbError}, 500 - ошибка базы данных
+ * @memberof module:UAMS~User
+ * @this User
+ * @function countUsersByMailConfirmation
+ * */
 User.statics.countUsersByMailConfirmation = function(){
 
 	let query = {};
@@ -66,9 +81,16 @@ User.statics.countUsersByMailConfirmation = function(){
 
 
 /**
- *
+ * Получение пользователей, у которых подтвержден номер телефона
  * @param skip - сколько пропустить сначала
- * @returns {*|promise}
+ * @throws {ValidationError}, 400 - значение skip не может быть меньше нуля
+ * @returns {promise}
+ * @fulfill {User[]} - массив пользователей
+ * @reject {DbError}, 204 - ничего не найдено
+ * @reject {DbError}, 500 - ошибка базы данных
+ * @memberof module:UAMS~User
+ * @this User
+ * @function countUsersByMobileConfirmation
  */
 User.statics.getUsersByMobileConfirmation = function(skip){
 
@@ -94,9 +116,14 @@ User.statics.getUsersByMobileConfirmation = function(skip){
 };
 
 /**
- *
- * @returns {*|promise}
- */
+ * Подсчет пользователей с подтвержденным номером телефона
+ * @returns {promise}
+ * @fulfill {number} - количетсво пользователей
+ * @reject {DbError}, 500 - ошибка базы данных
+ * @memberof module:UAMS~User
+ * @this User
+ * @function countUsersByMobileConfirmation
+ * */
 User.statics.countUsersByMobileConfirmation = function(){
 
 	let query = {};
@@ -117,9 +144,16 @@ User.statics.countUsersByMobileConfirmation = function(){
 };
 
 /**
- *
+ * Получение пользователей, у которых подтвержден документ
  * @param skip - сколько пропустить сначала
- * @returns {*|promise}
+ * @throws {ValidationError}, 400 - значение skip не может быть меньше нуля
+ * @returns {promise}
+ * @fulfill {User[]} - массив пользователей
+ * @reject {DbError}, 204 - ничего не найдено
+ * @reject {DbError}, 500 - ошибка базы данных
+ * @memberof module:UAMS~User
+ * @this User
+ * @function getUsersByDocumentConfirmation
  */
 User.statics.getUsersByDocumentConfirmation = function(skip){
 
@@ -145,9 +179,14 @@ User.statics.getUsersByDocumentConfirmation = function(skip){
 };
 
 /**
- *
- * @returns {*|promise}
- */
+ * Подсчет пользователей с подтвержденным документом
+ * @returns {promise}
+ * @fulfill {number} - количетсво пользователей
+ * @reject {DbError}, 500 - ошибка базы данных
+ * @memberof module:UAMS~User
+ * @this User
+ * @function countUsersByDocumentConfirmation
+ * */
 User.statics.countUsersByDocumentConfirmation = function(){
 
 	let query = {};
@@ -169,9 +208,17 @@ User.statics.countUsersByDocumentConfirmation = function(){
 
 
 /**
- *
- * @param skip
- * @returns {*|promise}
+ * Получение пользователей, у которых ожидается варификация документа
+ * @param skip - сколько пропустить сначала
+ * @throws {ValidationError}, 400 - значение skip не может быть меньше нуля
+ * @returns {promise}
+ * @fulfill {User[]} - массив пользователей
+ * @reject {DbError}, 204 - ничего не найдено
+ * @reject {DbError}, 500 - ошибка базы данных
+ * @memberof module:UAMS~User
+ * @this User
+ * @alert - метод не работает
+ * @function getUsersByDocumentVarificationRequired
  */
 //TODO продумать каким образом понимать, что требуется проверка документа
 User.statics.getUsersByDocumentVarificationRequired = function(skip){
@@ -193,31 +240,6 @@ User.statics.getUsersByDocumentVarificationRequired = function(skip){
 	});
 
 	return deffer.promise;
-};
-
-
-
-User.statics.getUsersByDocumentConfirmation = function(skip){
-
-	if(skip < 0) throw new ValidationError(400, '@param skip cannot be less than 0');
-	let query = {};
-	query['authActions.documentSubmit.done'] = true;
-
-	let deffer = Q.defer();
-
-	let promise = this.find(query).limit(perPage).skip(perPage * skip).exec();
-
-	promise.then(function(users){
-		if(users.length) deffer.fulfill(users);
-		else {
-			deffer.reject(new DbError(null, 204, Util.format('No users found with document confirmed')));
-		}
-	}).catch(function(err){
-		if(err) deffer.reject(new DbError(err, 500));
-	});
-
-	return deffer.promise;
-
 };
 
 

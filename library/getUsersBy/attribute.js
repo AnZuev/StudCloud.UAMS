@@ -10,7 +10,11 @@ let ValidationError = require("@anzuev/studcloud.errors").ValidationError,
 /**
  * Get users by one key(query)
  * @param query
- * @returns {*|promise}
+ * @returns {promise}
+ * @fulfill {User[]} - массив пользователей
+ * @reject {DbError}, 204 - ничего не найдено
+ * @reject {DbError}, 500 - ошибка базы данных * @function getUsersByOneKey
+ * @memberof module:UAMS~User
  */
 User.statics.getUsersByOneKey = function(query){
 	let deffer = Q.defer();
@@ -31,8 +35,14 @@ User.statics.getUsersByOneKey = function(query){
 
 /**
  * Get users by 2 keys
- * @param query
- * @returns {*|promise}
+ * @param query - запрос
+ * @returns {promise}
+ * @fulfill {User[]} - массив пользователей
+ * @reject {DbError}, 204 - ничего не найдено
+ * @reject {DbError}, 500 - ошибка базы данных * @memberof module:UAMS~User
+ * @this User
+ * @memberof module:UAMS~User
+ * @function getUsersByTwoKeys
  */
 User.statics.getUsersByTwoKeys = function(query){
 	let deffer = Q.defer();
@@ -52,9 +62,17 @@ User.statics.getUsersByTwoKeys = function(query){
 
 
 /**
- *
- * @param university
- * @returns {*|promise}
+ * Получение пользователей по университету
+ * @param university - идентификатор университета
+ * @returns {promise}
+ * @fulfill {User[]} - массив пользователей
+ * @reject {DbError}, 204 - ничего не найдено
+ * @reject {DbError}, 500 - ошибка базы данных * @fulfill {User[]} - массив пользователей
+ * @reject {DbError}, 204 - ничего не найдено
+ * @reject {DbError}, 500 - ошибка базы данных
+ * @memberof module:UAMS~User
+ * @this User
+ * @function getUsersByUniversity
  */
 User.statics.getUsersByUniversity = function(university){
 	let deffer = Q.defer();
@@ -71,11 +89,16 @@ User.statics.getUsersByUniversity = function(university){
 	return deffer.promise;
 };
 
-
 /**
- *
- * @param faculty
- * @returns {*|promise}
+ * Получение пользователей по факультету
+ * @param faculty - идентификатор факультета
+ * @returns {promise}
+ * @fulfill {User[]} - массив пользователей
+ * @reject {DbError}, 204 - ничего не найдено
+ * @reject {DbError}, 500 - ошибка базы данных
+ * @memberof module:UAMS~User
+ * @this User
+ * @function getUsersByFaculty
  */
 User.statics.getUsersByFaculty = function(faculty){
 	let deffer = Q.defer();
@@ -94,12 +117,18 @@ User.statics.getUsersByFaculty = function(faculty){
 
 
 /**
- *
- * @param query
- * @property university
- * @property faculty
- * @property group
- * @returns {*|promise}
+ * Получение пользователя по группе
+ * @param query - запрос
+ * @property university - идентификатор университета
+ * @property faculty - идентификатор факультета
+ * @property group - группа
+ * @returns {promise}
+ * @fulfill {User[]} - массив пользователей
+ * @reject {DbError}, 204 - ничего не найдено
+ * @reject {DbError}, 500 - ошибка базы данных
+ * @memberof module:UAMS~User
+ * @this User
+ * @function getUsersByGroup
  */
 User.statics.getUsersByGroup = function(query){
 	let deffer = Q.defer();
@@ -117,9 +146,15 @@ User.statics.getUsersByGroup = function(query){
 };
 
 /**
- *
- * @param year
- * @returns {*|promise}
+ * Получение пользователей по курсу
+ * @param year - значение курса( 1-6)
+ * @returns {promise}
+ * @fulfill {User[]} - массив пользователей
+ * @reject {DbError}, 204 - ничего не найдено
+ * @reject {DbError}, 500 - ошибка базы данных
+ * @memberof module:UAMS~User
+ * @this User
+ * @function getUsersByYear
  */
 User.statics.getUsersByYear = function(year){
 	let deffer = Q.defer();

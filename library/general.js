@@ -11,6 +11,14 @@ let Util = require('util'),
 const logger = require('../libs/logger');
 
 
+/**
+ * Зашифровка пароля
+ * @param password - пароль
+ * @memberof module:UAMS~User
+ * @instance
+ * @this User
+ * @returns {string} password - зашифрованный пароль
+ */
 User.methods.encryptPassword = function(password){
 	return Crypto.createHmac('sha1',this.auth.salt).update(password + "").digest("hex");
 };
@@ -22,6 +30,7 @@ User.virtual('auth.password')
 		this.auth.hashed_password = this.encryptPassword(password);
 	})
 	.get(function() { return this._plainPassword;});
+
 
 User.statics.createUser = function*(authData){
 	let User = this;

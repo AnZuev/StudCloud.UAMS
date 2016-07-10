@@ -10,8 +10,14 @@ const logger = require('../libs/logger');
 
 /**
  * Get user by id
- * @param id
- * @returns {*|promise}
+ * @function getUserById
+ * @param {mongoose.Types.ObjectId} id - идентификатор пользователя
+ * @memberof module:UAMS~User
+ * @returns {promise}
+ * @this User
+ * @fulfill {User[]}
+ * @reject {DbError}, 404 - пользователь не найден
+ * @reject {DbError}, 500 - ошибка базы данных
  */
 User.statics.getUserById = function(id){
 	let deffer = Q.defer();
@@ -32,8 +38,14 @@ User.statics.getUserById = function(id){
 
 /**
  * Get user by mail
- * @param mail
- * @returns {*|promise}
+ * @function getUserByMail
+ * @param {string} mail - почтовый адрес
+ * @memberof module:UAMS~User
+ * @this User
+ * @fulfill {User[]}
+ * @reject {DbError}, 404 - пользователь не найден
+ * @reject {DbError}, 500 - ошибка базы данных
+ * @returns {promise}
  */
 User.statics.getUserByMail = function (mail){
 	let deffer = Q.defer();
@@ -55,8 +67,14 @@ User.statics.getUserByMail = function (mail){
 
 /**
  * get user by phone
- * @param phone
- * @returns {*|promise}
+ * @function getUserByPhone
+ * @param {string} phone - номер мобильного телефона
+ * @memberof module:UAMS~User
+ * @this User
+ * @fulfill {User[]}
+ * @reject {DbError}, 404 - пользователь не найден
+ * @reject {DbError}, 500 - ошибка базы данных
+ * @returns {promise}
  */
 User.statics.getUserByPhone = function(phone){
 	let deffer = Q.defer();

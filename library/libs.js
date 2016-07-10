@@ -14,6 +14,8 @@ const logger = require('../libs/logger');
  */
 /**
  * @this {User}
+ * @memberof User
+ * @instance
  * Безопасное сохранение пользователя. В случае ошибки пытается сохранить еще раз. Максимальное
  * количество попыток - 5
  * @throws {DbError} 500, ошибка базы данных
@@ -36,12 +38,28 @@ function* saveUser (){
 User.methods.saveUser = saveUser;
 
 
+/**
+ * Блокировка пользователя(меняет состояние state на blocked);
+ * @memberof User
+ * @instance
+ * @function block
+ * @returns {void}
+ *
+ */
 User.methods.block = function(){
 	this.state = "Blocked";
 };
 
 
 
+/**
+ * Блокировка пользователя(меняет состояние state на blocked) + сохранение
+ * @memberof User
+ * @static
+ * @function blockUser
+ * @returns {void}
+ *
+ */
 User.statics.blockUser = function*(userId){
 	let user = yield this.getUserById(userId);
 	user.block();
@@ -49,6 +67,13 @@ User.statics.blockUser = function*(userId){
 };
 
 
+/**
+ * Удаление пользователя по id
+ * @memberof User
+ * @static
+ * @param userId - идентификатор пользователя
+ * @returns {*|promise}
+ */
 User.statics.removeUser = function(userId){
 	let deffer = Q.defer();
 	let promise = this.remove({_id: userId}).exec();
@@ -72,6 +97,9 @@ User.statics.removeUser = function(userId){
  * Check password
  * @param password - пароль для проверки
  * @returns {boolean}. true - пароль верен, false - пароль неверен
+ * @this User
+ * @instance
+ * @memberof module:UAMS~User
  */
 function checkPassword (password){
 	return (this.encryptPassword(password) === this.auth.hashed_password);
@@ -81,7 +109,11 @@ User.methods.checkPassword = checkPassword;
 
 /**
  * Получение уровня авторизации
- * @returns {enum} - 1, 2, 3, 4
+ * @memberof module:UAMS~User
+ * @returns {number} - 1, 2, 3, 4
+ * @this User
+ * @instance
+ *
  */
 function getAuthLevel(){
 	if(this.authActions.documentSubmit.done){
@@ -99,6 +131,9 @@ User.methods.getAuthLevel = getAuthLevel;
 /**
  * Пользователь принадлежит группе?
  * @param group - группа
+ * @memberof module:UAMS~User
+ * @this User
+ * @instance
  * @returns {boolean}, true - принадлежит, false - не принадлежит
  */
 function isInGroup(group){

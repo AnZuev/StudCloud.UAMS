@@ -9,13 +9,13 @@ let Util = require('util'),
 
 const logger = require('../libs/logger');
 
-/**
- * @type {exports|module.exports}
- */
+
 
 /**
  * Получение контактов пользователя по ключу и контексту
- *
+ * @memberof module:UAMS~User
+ * @this User
+ * @instance
  * @param key - ключ(регулярное выражение)
  * @param context - объект. Поддерживаемые значения - university, faculty, year, group
  * @returns {promise}
@@ -59,6 +59,9 @@ User.methods.getContactsByOneKey = getContactsByOneKey;
  * @fulfil {user} - объект вида user
  * @reject {DbError} 204, не найдено контактов
  * @reject {DbError} 500, ошибка базы данных
+ * @memberof module:UAMS~User
+ * @this User
+ * @instance
  */
 function getContactsByTwoKeys(key1, key2, context){
 	let deffer = Q.defer();
@@ -105,6 +108,9 @@ User.methods.getContactsByTwoKeys = getContactsByTwoKeys;
  * @fulfil {user} - объект вида user
  * @reject {DbError} 204, не найдено контактов
  * @reject {DbError} 500, ошибка базы данных
+ * @memberof module:UAMS~User
+ * @this User
+ * @instance
  */
 function getContactsByContext(context){
 	let deffer = Q.defer();

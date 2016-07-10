@@ -9,8 +9,16 @@ let ValidationError = require("@anzuev/studcloud.errors").ValidationError,
 	DbError = require("@anzuev/studcloud.errors").DbError;
 
 
-
-
+/**
+ * Подсчет сколько пользователей было зарегистрировано начиная с какого-то времени
+ * @function countUserBySignUpTime
+ * @param {Date} age - за какой период получать пользователей
+ * @returns {promise}
+ * @fulfill {number} - количетсво пользователей
+ * @reject {DbError}, 500 - ошибка базы данных
+ * @memberof module:UAMS~User
+ * @this User
+ */
 User.statics.countUserBySignUpTime = function(age){
 	let defer = Q.defer();
 	let promise = this.count({created:{$gte: age.toISOString()} }).exec();
@@ -24,6 +32,15 @@ User.statics.countUserBySignUpTime = function(age){
 	return defer.promise;
 };
 
+/**
+ * Подсчет сколько пользователей было зарегистрировано начиная с какого-то времени
+ * @function countAllUsers
+ * @returns {promise}
+ * @fulfill {number} - количетсво пользователей
+ * @reject {DbError}, 500 - ошибка базы данных
+ * @memberof module:UAMS~User
+ * @this User
+ */
 User.statics.countAllUsers = function(){
 	let defer = Q.defer();
 	let promise = this.count({}).exec();

@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * @module UAMS
+ *
+ */
 let User = require("@anzuev/studcloud.datamodels").User;
 
 require('./getUserBy');

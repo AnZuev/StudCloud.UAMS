@@ -7,16 +7,15 @@ let Util = require('util'),
 	User = require("@anzuev/studcloud.datamodels").User,
 	Mongoose = require('mongoose');
 
-const logger = require('../libs/logger');
+const logger = require('../libs/logger').getLogger();
 
 
-/**
- * @module User
- */
+
 /**
  * Изменить аватарку
  * @param photoId - идентификатор фотографии на сервере статики
- *
+ * @memberof module:UAMS~User
+ * @instance
  */
 function changePhoto(photoId){
 	photoId = Mongoose.Types.ObjectId(photoId);
@@ -26,6 +25,8 @@ User.methods.changePhoto = changePhoto;
 
 /**
  * Изменить группу
+ * @memberof User
+ * @instance
  * @param newGroup - новая группа
  * @throws {ValidationError}400, номер группы совпадает со старым
  * @throws {ValidationError} 400, длина группы не может быть 0
@@ -45,8 +46,11 @@ User.methods.changeGroup = changeGroup;
 
 /**
  * Изменение университета
+ * @memberof module:UAMS~User
+ * @this User
+ * @instance
  * @param newUniversity - идентификатор университета
- *
+ * return {void}
  */
 function changeUniversity(newUniversity){
 	newUniversity = Mongoose.Types.ObjectId(newUniversity);
@@ -63,6 +67,9 @@ User.methods.changeUniversity = changeUniversity;
 
 /**
  * Изменение факультета
+ * @memberof module:UAMS~User
+ * @instance
+ * @this User
  * @param newFaculty - id нового факультета
  * @throws {ValidationError} 400, новый факультет совпадает со старым
  */
@@ -81,6 +88,8 @@ User.methods.changeFaculty = changeFaculty;
 
 /**
  * Изменение курса обучения
+ * @memberof User
+ * @instance
  * @param newYear - новый курс
  * @throws {ValidationError} 400 - переданное значение курса < 0 или больше 6
  */
@@ -92,6 +101,9 @@ function changeYear(newYear){
 User.methods.changeYear = changeYear;
 /**
  * Изменение имени
+ * @this {User}
+ * @memberof module:UAMS~User
+ * @instance
  * @param newName - новое имя
  * @throws {ValidationError}400, Имя должно содержать хотя бы 2 символа
  */
@@ -103,6 +115,9 @@ User.methods.changeName = changeName;
 
 /**
  * Изменение имени
+ * @this {User}
+ * @memberof module:UAMS~User
+ * @instance
  * @param newSurname - новая фамилия
  * @throws {ValidationError}400, фамилия должна содержать хотя бы 2 символа
  */

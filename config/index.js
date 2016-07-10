@@ -5,7 +5,7 @@ var nconf = require('nconf');
 var path = require('path');
 
 nconf.argv()
-    .env();
-    //.file("UAMSConfig", {file: path.join(__dirname, 'config.json')});
+    .env()
+    .file("UAMSConfig", {file: path.join(__dirname, 'config.json')});
 
 module.exports = nconf;
