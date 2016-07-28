@@ -10,7 +10,7 @@ gulp.task('docs', function () {
 		.on('data', function(file){
 			console.log(file.path);
 		})
-		.pipe(concat('all.md'))
+		.pipe(concat('../../README.md'))
 		.pipe(gulpJsdoc2md({ template: fs.readFileSync('./readme.hbs', 'utf8') }))
 		.on('error', function (err) {
 			gutil.log('jsdoc2md failed:', err.message)

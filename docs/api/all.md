@@ -177,9 +177,9 @@
 - <code>Error</code> - не указано соединение для коллекции 'users'
 
 
-| Param | Type | Description |
-| --- | --- | --- |
-| config | <code>nconf</code> | конфигурация типа nconf |
+| Param | Description |
+| --- | --- |
+| config | конфигурация типа nconf |
 
 <a name="module_UAMS..UAMS.getUserById"></a>
 
@@ -1106,9 +1106,9 @@ Get users by 2 keys
 - <code>Error</code> - не указано соединение для коллекции 'users'
 
 
-| Param | Type | Description |
-| --- | --- | --- |
-| config | <code>nconf</code> | конфигурация типа nconf |
+| Param | Description |
+| --- | --- |
+| config | конфигурация типа nconf |
 
 <a name="module_UAMS..UAMS.getUserById"></a>
 
