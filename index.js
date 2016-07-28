@@ -36,19 +36,21 @@ UAMS._Users = null;
  *
  */
 UAMS.configure = function(config){
-	let connection = require('./libs/connections')(config);
 	UAMS._config = config;
+	require('./libs/connections').configure(config);
 	require('./libs/logger').configure(config);
 	logger = require('./libs/logger').getLogger();
-	if(!connection.users){
+	let connection = require("./libs/connections").getConnections().users;
+	if(!connection){
 		let err = new Error("No connection specified for 'users' collection");
 		logger.error(err);
 		throw err;
 	}else{
 		let User = require('./library');
-		UAMS._Users = connection.users.model("User", User);
+		UAMS._Users = connection.model("User", User);
 	}
 
+	logger.info("UAMS has been successfully configured and started");
 
 	/**
 	 * Получение пользователя по id

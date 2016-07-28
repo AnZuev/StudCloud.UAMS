@@ -7,7 +7,7 @@ let Util = require('util'),
 	Mongoose = require('mongoose'),
 	Crypto = require("crypto");
 
-const logger = require('../libs/logger');
+const logger = require('../libs/logger').getLogger();
 
 
 /**

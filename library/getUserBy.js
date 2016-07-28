@@ -6,7 +6,7 @@ let Util = require('util'),
 	User = require("@anzuev/studcloud.datamodels").User;
 
 
-const logger = require('../libs/logger');
+const logger = require('../libs/logger').getLogger();
 
 /**
  * Get user by id

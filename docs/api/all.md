@@ -4,7 +4,7 @@
     
 * [UAMS](#module_UAMS)
     * [~UAMS](#module_UAMS..UAMS)
-        * [.configure()](#module_UAMS..UAMS.configure)
+        * [.configure(config)](#module_UAMS..UAMS.configure)
         * [.getUserById(id)](#module_UAMS..UAMS.getUserById) ⇒ <code>user</code>
         * [.getUserByMail(mail)](#module_UAMS..UAMS.getUserByMail) ⇒ <code>user</code>
         * [.getUserByPhone(phone)](#module_UAMS..UAMS.getUserByPhone) ⇒ <code>user</code>
@@ -69,7 +69,7 @@
     
 * [UAMS](#module_UAMS)
     * [~UAMS](#module_UAMS..UAMS)
-        * [.configure()](#module_UAMS..UAMS.configure)
+        * [.configure(config)](#module_UAMS..UAMS.configure)
         * [.getUserById(id)](#module_UAMS..UAMS.getUserById) ⇒ <code>user</code>
         * [.getUserByMail(mail)](#module_UAMS..UAMS.getUserByMail) ⇒ <code>user</code>
         * [.getUserByPhone(phone)](#module_UAMS..UAMS.getUserByPhone) ⇒ <code>user</code>
@@ -141,7 +141,7 @@
 **this**: <code>{UAMS}</code>  
 
 * [~UAMS](#module_UAMS..UAMS)
-    * [.configure()](#module_UAMS..UAMS.configure)
+    * [.configure(config)](#module_UAMS..UAMS.configure)
     * [.getUserById(id)](#module_UAMS..UAMS.getUserById) ⇒ <code>user</code>
     * [.getUserByMail(mail)](#module_UAMS..UAMS.getUserByMail) ⇒ <code>user</code>
     * [.getUserByPhone(phone)](#module_UAMS..UAMS.getUserByPhone) ⇒ <code>user</code>
@@ -166,7 +166,7 @@
 
 <a name="module_UAMS..UAMS.configure"></a>
 
-#### UAMS.configure()
+#### UAMS.configure(config)
 Инициализация модуля. Здесь происходит попытка подключиться к бд,
  используя данные из конфига, а после происходит привязка модели
  User к данному подключению
@@ -175,6 +175,11 @@
 **Throws**:
 
 - <code>Error</code> - не указано соединение для коллекции 'users'
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| config | <code>nconf</code> | конфигурация типа nconf |
 
 <a name="module_UAMS..UAMS.getUserById"></a>
 
@@ -1065,7 +1070,7 @@ Get users by 2 keys
 **this**: <code>{UAMS}</code>  
 
 * [~UAMS](#module_UAMS..UAMS)
-    * [.configure()](#module_UAMS..UAMS.configure)
+    * [.configure(config)](#module_UAMS..UAMS.configure)
     * [.getUserById(id)](#module_UAMS..UAMS.getUserById) ⇒ <code>user</code>
     * [.getUserByMail(mail)](#module_UAMS..UAMS.getUserByMail) ⇒ <code>user</code>
     * [.getUserByPhone(phone)](#module_UAMS..UAMS.getUserByPhone) ⇒ <code>user</code>
@@ -1090,7 +1095,7 @@ Get users by 2 keys
 
 <a name="module_UAMS..UAMS.configure"></a>
 
-#### UAMS.configure()
+#### UAMS.configure(config)
 Инициализация модуля. Здесь происходит попытка подключиться к бд,
  используя данные из конфига, а после происходит привязка модели
  User к данному подключению
@@ -1099,6 +1104,11 @@ Get users by 2 keys
 **Throws**:
 
 - <code>Error</code> - не указано соединение для коллекции 'users'
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| config | <code>nconf</code> | конфигурация типа nconf |
 
 <a name="module_UAMS..UAMS.getUserById"></a>
 
