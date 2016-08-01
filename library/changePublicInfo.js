@@ -25,7 +25,7 @@ User.methods.changePhoto = changePhoto;
 
 /**
  * Изменить группу
- * @memberof User
+ * @memberof module:UAMS~User
  * @instance
  * @param newGroup - новая группа
  * @throws {ValidationError}400, номер группы совпадает со старым
@@ -88,7 +88,7 @@ User.methods.changeFaculty = changeFaculty;
 
 /**
  * Изменение курса обучения
- * @memberof User
+ * @memberof module:UAMS~User
  * @instance
  * @param newYear - новый курс
  * @throws {ValidationError} 400 - переданное значение курса < 0 или больше 6

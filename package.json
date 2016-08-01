@@ -1,6 +1,6 @@
 {
   "name": "@anzuev/studcloud.uams",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "User Account Management Service for StudCloud project",
   "main": "index.js",
   "scripts": {

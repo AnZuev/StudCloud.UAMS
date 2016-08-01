@@ -19,7 +19,7 @@ let DbError = require("@anzuev/studcloud.errors").DbError;
  */
 function UAMS(){}
 /**
- * Модель mpngoose для работы с базой данных
+ * Модель mongoose для работы с базой данных
  * @type {null| Mongoose.model}
  * @private
  * @memberor UAMS
@@ -354,12 +354,12 @@ UAMS.configure = function(config){
 
 		try{
 			let user = yield* UAMS._Users.createUser(authData);
+			logger.trace('New user with mail added %s', authData.mail);
+			return user;
 		}catch(err){
 			logger.warn(err);
 			throw err;
 		}
-		logger.trace('new user with mail added %s', authData.mail);
-		return user;
 	};
 
 

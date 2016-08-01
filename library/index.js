@@ -1,8 +1,7 @@
 'use strict';
 
 /**
- * @module UAMS
- *
+ * @memberof UAMS
  */
 let User = require("@anzuev/studcloud.datamodels").User;
 

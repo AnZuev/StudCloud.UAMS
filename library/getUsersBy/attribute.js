@@ -39,7 +39,7 @@ User.statics.getUsersByOneKey = function(query){
  * @returns {promise}
  * @fulfill {User[]} - массив пользователей
  * @reject {DbError}, 204 - ничего не найдено
- * @reject {DbError}, 500 - ошибка базы данных * @memberof module:UAMS~User
+ * @reject {DbError}, 500 - ошибка базы данных
  * @this User
  * @memberof module:UAMS~User
  * @function getUsersByTwoKeys
@@ -66,8 +66,6 @@ User.statics.getUsersByTwoKeys = function(query){
  * @param university - идентификатор университета
  * @returns {promise}
  * @fulfill {User[]} - массив пользователей
- * @reject {DbError}, 204 - ничего не найдено
- * @reject {DbError}, 500 - ошибка базы данных * @fulfill {User[]} - массив пользователей
  * @reject {DbError}, 204 - ничего не найдено
  * @reject {DbError}, 500 - ошибка базы данных
  * @memberof module:UAMS~User

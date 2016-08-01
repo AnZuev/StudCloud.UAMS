@@ -14,7 +14,7 @@ const logger = require('../libs/logger').getLogger();
  */
 /**
  * @this {User}
- * @memberof User
+ * @memberof module:UAMS~User
  * @instance
  * Безопасное сохранение пользователя. В случае ошибки пытается сохранить еще раз. Максимальное
  * количество попыток - 5
@@ -40,7 +40,7 @@ User.methods.saveUser = saveUser;
 
 /**
  * Блокировка пользователя(меняет состояние state на blocked);
- * @memberof User
+ * @memberof module:UAMS~User
  * @instance
  * @function block
  * @returns {void}
@@ -54,7 +54,7 @@ User.methods.block = function(){
 
 /**
  * Блокировка пользователя(меняет состояние state на blocked) + сохранение
- * @memberof User
+ * @memberof module:UAMS~User
  * @static
  * @function blockUser
  * @returns {void}
@@ -69,7 +69,7 @@ User.statics.blockUser = function*(userId){
 
 /**
  * Удаление пользователя по id
- * @memberof User
+ * @memberof module:UAMS~User
  * @static
  * @param userId - идентификатор пользователя
  * @returns {*|promise}
@@ -97,7 +97,7 @@ User.statics.removeUser = function(userId){
  * Check password
  * @param password - пароль для проверки
  * @returns {boolean}. true - пароль верен, false - пароль неверен
- * @this User
+ * @this {User}
  * @instance
  * @memberof module:UAMS~User
  */
@@ -111,7 +111,7 @@ User.methods.checkPassword = checkPassword;
  * Получение уровня авторизации
  * @memberof module:UAMS~User
  * @returns {number} - 1, 2, 3, 4
- * @this User
+ * @this {User}
  * @instance
  *
  */
@@ -132,7 +132,7 @@ User.methods.getAuthLevel = getAuthLevel;
  * Пользователь принадлежит группе?
  * @param group - группа
  * @memberof module:UAMS~User
- * @this User
+ * @this {User}
  * @instance
  * @returns {boolean}, true - принадлежит, false - не принадлежит
  */
