@@ -2,6 +2,7 @@
 
 let Util = require('util'),
 	DbError = require("@anzuev/studcloud.errors").DbError,
+	ValidationError = require("@anzuev/studcloud.errors").ValidationError,
 	Q = require('q'),
 	User = require("@anzuev/studcloud.datamodels").User,
 	Mongoose = require('mongoose'),

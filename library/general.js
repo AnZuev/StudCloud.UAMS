@@ -13,16 +13,20 @@ const logger = require('../libs/logger').getLogger();
 
 /**
  * Зашифровка пароля
+ * @function encryptPassword
  * @param password - пароль
  * @memberof module:UAMS~User
  * @instance
- * @this User
+ * @this {User}
  * @returns {string} password - зашифрованный пароль
  */
 User.methods.encryptPassword = function(password){
 	return Crypto.createHmac('sha1',this.auth.salt).update(password + "").digest("hex");
 };
 
+/**
+ * @this {User}
+ */
 User.virtual('auth.password')
 	.set(function(password) {
 		this.auth._plainPassword = password;
