@@ -1,75 +1,7 @@
 # Модули
 
-
-* [UAMS](#module_UAMS)
-    * [~UAMS](#module_UAMS..UAMS)
-        * [.configure(config)](#module_UAMS..UAMS.configure)
-        * [.getUserById(id)](#module_UAMS..UAMS.getUserById) ⇒ <code>user</code>
-        * [.getUserByMail(mail)](#module_UAMS..UAMS.getUserByMail) ⇒ <code>user</code>
-        * [.getUserByPhone(phone)](#module_UAMS..UAMS.getUserByPhone) ⇒ <code>user</code>
-        * [.getUsersByKeyAndContext(key, context)](#module_UAMS..UAMS.getUsersByKeyAndContext) ⇒
-        * [.getUsersByTwoKeysAndContext(key1, key2, context)](#module_UAMS..UAMS.getUsersByTwoKeysAndContext) ⇒
-        * [.getUsersByUniversity(university)](#module_UAMS..UAMS.getUsersByUniversity) ⇒
-        * [.getUsersByFaculty(faculty)](#module_UAMS..UAMS.getUsersByFaculty) ⇒
-        * [.getUsersByGroup(university, faculty, group)](#module_UAMS..UAMS.getUsersByGroup) ⇒
-        * [.getUsersByYear(year)](#module_UAMS..UAMS.getUsersByYear) ⇒
-        * [.getUsersByMailConfirmation(skip)](#module_UAMS..UAMS.getUsersByMailConfirmation) ⇒
-        * [.countUsersByMailConfirmation()](#module_UAMS..UAMS.countUsersByMailConfirmation) ⇒ <code>number</code>
-        * [.getUsersByMobileConfirmation(skip)](#module_UAMS..UAMS.getUsersByMobileConfirmation) ⇒
-        * [.countUsersByMobileConfirmation()](#module_UAMS..UAMS.countUsersByMobileConfirmation) ⇒ <code>number</code>
-        * [.countNewUsersToday()](#module_UAMS..UAMS.countNewUsersToday) ⇒ <code>number</code>
-        * [.countNewUsersThisWeek()](#module_UAMS..UAMS.countNewUsersThisWeek) ⇒ <code>number</code>
-        * [.countNewUsersThisMonth()](#module_UAMS..UAMS.countNewUsersThisMonth) ⇒ <code>number</code>
-        * [.countNewUsersThisYear()](#module_UAMS..UAMS.countNewUsersThisYear) ⇒ <code>number</code>
-        * [.countAllUsers()](#module_UAMS..UAMS.countAllUsers) ⇒ <code>number</code>
-        * [.createUser(authData)](#module_UAMS..UAMS.createUser) ⇒ <code>user</code>
-        * [.blockUser(userId)](#module_UAMS..UAMS.blockUser) ⇒ <code>boolean</code>
-        * [.removeUser(userId)](#module_UAMS..UAMS.removeUser) ⇒ <code>boolean</code>
-    * [~User](#module_UAMS..User)
-        * _instance_
-            * [.changePhoto(photoId)](#module_UAMS..User+changePhoto)
-            * [.changeGroup(newGroup)](#module_UAMS..User+changeGroup)
-            * [.changeUniversity(newUniversity)](#module_UAMS..User+changeUniversity)
-            * [.changeFaculty(newFaculty)](#module_UAMS..User+changeFaculty)
-            * [.changeYear(newYear)](#module_UAMS..User+changeYear)
-            * [.changeName(newName)](#module_UAMS..User+changeName)
-            * [.changeSurname(newSurname)](#module_UAMS..User+changeSurname)
-            * [.saveUser()](#module_UAMS..User+saveUser) ⇒ <code>user</code>
-            * [.block()](#module_UAMS..User+block) ⇒ <code>void</code>
-            * [.checkPassword(password)](#module_UAMS..User+checkPassword) ⇒ <code>boolean</code>
-            * [.getAuthLevel()](#module_UAMS..User+getAuthLevel) ⇒ <code>number</code>
-            * [.isInGroup(group)](#module_UAMS..User+isInGroup) ⇒ <code>boolean</code>
-            * [.requestMailConfirmation()](#module_UAMS..User+requestMailConfirmation) ⇒ <code>string</code>
-            * [.confirmMail(key)](#module_UAMS..User+confirmMail) ⇒ <code>boolean</code>
-            * [.requestMobileConfirmation()](#module_UAMS..User+requestMobileConfirmation) ⇒ <code>string</code>
-            * [.confirmMobile(key)](#module_UAMS..User+confirmMobile) ⇒ <code>boolean</code>
-            * [.requestPasswordChange()](#module_UAMS..User+requestPasswordChange)
-            * [.confirmPasswordToken(key)](#module_UAMS..User+confirmPasswordToken) ⇒ <code>boolean</code>
-            * [.getContactsByOneKey(key, context)](#module_UAMS..User+getContactsByOneKey) ⇒ <code>promise</code>
-            * [.getContactsByTwoKeys(key1, key2, context)](#module_UAMS..User+getContactsByTwoKeys) ⇒ <code>promise</code>
-            * [.getContactsByContext(context)](#module_UAMS..User+getContactsByContext) ⇒ <code>promise</code>
-        * _static_
-            * [.getUserById(id)](#module_UAMS..User.getUserById) ⇒ <code>promise</code>
-            * [.getUserByMail(mail)](#module_UAMS..User.getUserByMail) ⇒ <code>promise</code>
-            * [.getUserByPhone(phone)](#module_UAMS..User.getUserByPhone) ⇒ <code>promise</code>
-            * [.blockUser()](#module_UAMS..User.blockUser) ⇒ <code>void</code>
-            * [.User.statics.getUsersByOneKey(query)](#module_UAMS..User.User.statics.getUsersByOneKey) ⇒ <code>promise</code>
-            * [.getUsersByTwoKeys(query)](#module_UAMS..User.getUsersByTwoKeys) ⇒ <code>promise</code>
-            * [.getUsersByUniversity(university)](#module_UAMS..User.getUsersByUniversity) ⇒ <code>promise</code>
-            * [.getUsersByFaculty(faculty)](#module_UAMS..User.getUsersByFaculty) ⇒ <code>promise</code>
-            * [.getUsersByGroup(query)](#module_UAMS..User.getUsersByGroup) ⇒ <code>promise</code>
-            * [.getUsersByYear(year)](#module_UAMS..User.getUsersByYear) ⇒ <code>promise</code>
-            * [.getUsersByMailConfirmation(skip)](#module_UAMS..User.getUsersByMailConfirmation) ⇒ <code>promise</code>
-            * [.countUsersByMailConfirmation()](#module_UAMS..User.countUsersByMailConfirmation) ⇒ <code>promise</code>
-            * [.countUsersByMobileConfirmation(skip)](#module_UAMS..User.countUsersByMobileConfirmation) ⇒ <code>promise</code>
-            * [.countUsersByMobileConfirmation()](#module_UAMS..User.countUsersByMobileConfirmation) ⇒ <code>promise</code>
-            * [.getUsersByDocumentConfirmation(skip)](#module_UAMS..User.getUsersByDocumentConfirmation) ⇒ <code>promise</code>
-            * [.countUsersByDocumentConfirmation()](#module_UAMS..User.countUsersByDocumentConfirmation) ⇒ <code>promise</code>
-            * [.getUsersByDocumentVarificationRequired(skip)](#module_UAMS..User.getUsersByDocumentVarificationRequired) ⇒ <code>promise</code>
-            * [.countUserBySignUpTime(age)](#module_UAMS..User.countUserBySignUpTime) ⇒ <code>promise</code>
-            * [.countAllUsers()](#module_UAMS..User.countAllUsers) ⇒ <code>promise</code>
-
-<a name="module_UAMS..UAMS"></a>
+## UAMS
+    <a name="module_UAMS..UAMS"></a>
 
 ### UAMS~UAMS
 **Kind**: inner class of <code>[UAMS](#module_UAMS)</code>  
@@ -465,6 +397,7 @@
         * [.changeYear(newYear)](#module_UAMS..User+changeYear)
         * [.changeName(newName)](#module_UAMS..User+changeName)
         * [.changeSurname(newSurname)](#module_UAMS..User+changeSurname)
+        * [.encryptPassword(password)](#module_UAMS..User+encryptPassword) ⇒ <code>string</code>
         * [.saveUser()](#module_UAMS..User+saveUser) ⇒ <code>user</code>
         * [.block()](#module_UAMS..User+block) ⇒ <code>void</code>
         * [.checkPassword(password)](#module_UAMS..User+checkPassword) ⇒ <code>boolean</code>
@@ -476,6 +409,7 @@
         * [.confirmMobile(key)](#module_UAMS..User+confirmMobile) ⇒ <code>boolean</code>
         * [.requestPasswordChange()](#module_UAMS..User+requestPasswordChange)
         * [.confirmPasswordToken(key)](#module_UAMS..User+confirmPasswordToken) ⇒ <code>boolean</code>
+        * [.setNewPassword(password)](#module_UAMS..User+setNewPassword) ⇒ <code>void</code>
         * [.getContactsByOneKey(key, context)](#module_UAMS..User+getContactsByOneKey) ⇒ <code>promise</code>
         * [.getContactsByTwoKeys(key1, key2, context)](#module_UAMS..User+getContactsByTwoKeys) ⇒ <code>promise</code>
         * [.getContactsByContext(context)](#module_UAMS..User+getContactsByContext) ⇒ <code>promise</code>
@@ -601,6 +535,19 @@
 | Param | Description |
 | --- | --- |
 | newSurname | новая фамилия |
+
+<a name="module_UAMS..User+encryptPassword"></a>
+
+#### user.encryptPassword(password) ⇒ <code>string</code>
+Зашифровка пароля
+
+**Kind**: instance method of <code>[User](#module_UAMS..User)</code>  
+**Returns**: <code>string</code> - password - зашифрованный пароль  
+**this**: <code>{User}</code>  
+
+| Param | Description |
+| --- | --- |
+| password | пароль |
 
 <a name="module_UAMS..User+saveUser"></a>
 
@@ -729,6 +676,22 @@ Check password
 | Param | Description |
 | --- | --- |
 | key | ключ для подветржения |
+
+<a name="module_UAMS..User+setNewPassword"></a>
+
+#### user.setNewPassword(password) ⇒ <code>void</code>
+Установка нового пароля
+
+**Kind**: instance method of <code>[User](#module_UAMS..User)</code>  
+**Throws**:
+
+- <code>ValidationError</code> 400, пароль не может быть короче 5 символов
+
+**this**: <code>User</code>  
+
+| Param | Description |
+| --- | --- |
+| password | новый парол |
 
 <a name="module_UAMS..User+getContactsByOneKey"></a>
 
@@ -1053,6 +1016,7 @@ Get users by 2 keys
 **this**: <code>User</code>  
 **Fulfill**: <code>number</code> - количетсво пользователей  
 **Reject**: <code>DbError</code>, 500 - ошибка базы данных  
+
 # Методы
 
 ## &nbsp;&nbsp;UAMS
@@ -1452,6 +1416,7 @@ Get users by 2 keys
         * [.changeYear(newYear)](#module_UAMS..User+changeYear)
         * [.changeName(newName)](#module_UAMS..User+changeName)
         * [.changeSurname(newSurname)](#module_UAMS..User+changeSurname)
+        * [.encryptPassword(password)](#module_UAMS..User+encryptPassword) ⇒ <code>string</code>
         * [.saveUser()](#module_UAMS..User+saveUser) ⇒ <code>user</code>
         * [.block()](#module_UAMS..User+block) ⇒ <code>void</code>
         * [.checkPassword(password)](#module_UAMS..User+checkPassword) ⇒ <code>boolean</code>
@@ -1463,6 +1428,7 @@ Get users by 2 keys
         * [.confirmMobile(key)](#module_UAMS..User+confirmMobile) ⇒ <code>boolean</code>
         * [.requestPasswordChange()](#module_UAMS..User+requestPasswordChange)
         * [.confirmPasswordToken(key)](#module_UAMS..User+confirmPasswordToken) ⇒ <code>boolean</code>
+        * [.setNewPassword(password)](#module_UAMS..User+setNewPassword) ⇒ <code>void</code>
         * [.getContactsByOneKey(key, context)](#module_UAMS..User+getContactsByOneKey) ⇒ <code>promise</code>
         * [.getContactsByTwoKeys(key1, key2, context)](#module_UAMS..User+getContactsByTwoKeys) ⇒ <code>promise</code>
         * [.getContactsByContext(context)](#module_UAMS..User+getContactsByContext) ⇒ <code>promise</code>
@@ -1588,6 +1554,19 @@ Get users by 2 keys
 | Param | Description |
 | --- | --- |
 | newSurname | новая фамилия |
+
+<a name="module_UAMS..User+encryptPassword"></a>
+
+#### user.encryptPassword(password) ⇒ <code>string</code>
+Зашифровка пароля
+
+**Kind**: instance method of <code>[User](#module_UAMS..User)</code>  
+**Returns**: <code>string</code> - password - зашифрованный пароль  
+**this**: <code>{User}</code>  
+
+| Param | Description |
+| --- | --- |
+| password | пароль |
 
 <a name="module_UAMS..User+saveUser"></a>
 
@@ -1716,6 +1695,22 @@ Check password
 | Param | Description |
 | --- | --- |
 | key | ключ для подветржения |
+
+<a name="module_UAMS..User+setNewPassword"></a>
+
+#### user.setNewPassword(password) ⇒ <code>void</code>
+Установка нового пароля
+
+**Kind**: instance method of <code>[User](#module_UAMS..User)</code>  
+**Throws**:
+
+- <code>ValidationError</code> 400, пароль не может быть короче 5 символов
+
+**this**: <code>User</code>  
+
+| Param | Description |
+| --- | --- |
+| password | новый парол |
 
 <a name="module_UAMS..User+getContactsByOneKey"></a>
 

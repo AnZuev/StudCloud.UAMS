@@ -20,12 +20,12 @@ let DbError = require("@anzuev/studcloud.errors").DbError;
 function UAMS(){}
 /**
  * Модель mongoose для работы с базой данных
- * @type {null| Mongoose.model}
+ * @type {Mongoose.model}
  * @private
- * @memberor UAMS
+ * @memberor module:UAMS~User
  */
 
-UAMS._Users = null;
+UAMS._Users = undefined;
 
 /**
  *  Инициализация модуля. Здесь происходит попытка подключиться к бд,
@@ -71,6 +71,7 @@ UAMS.configure = function(config){
 	 * @returns {user} объект типа user
 	 * @throws {DbError} - 404, пользователь не найден
 	 * @throws {DbError} - 500, ошибка базы данных
+	 *
 	 */
 	UAMS.getUserByMail = function*(mail){
 		return yield UAMS._Users.getUserByMail(mail);

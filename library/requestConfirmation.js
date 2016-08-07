@@ -123,3 +123,18 @@ function confirmPasswordToken(key){
 };
 User.methods.confirmPasswordToken = confirmPasswordToken;
 
+
+/**
+ * Установка нового пароля
+ * @param password - новый парол
+ * @throws {ValidationError} 400, пароль не может быть короче 5 символов
+ * @returns {void}
+ * @this User
+ * @memberof module:UAMS~User
+ * @instance
+ * @function setNewPassword
+ */
+User.methods.setNewPassword = function(password){
+	if(password.length < 5) throw new ValidationError(400, "Password can't be less than 5 chars");
+	this.auth.password = password;
+}
