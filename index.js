@@ -39,6 +39,8 @@ UAMS.configure = function(config){
 	UAMS._config = config;
 	require('./libs/connections').configure(config);
 	require('./libs/logger').configure(config);
+	require("@anzuev/studcloud.rds").configure(config);
+
 	logger = require('./libs/logger').getLogger();
 	let connection = require("./libs/connections").getConnections().users;
 	if(!connection){

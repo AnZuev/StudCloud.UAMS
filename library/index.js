@@ -23,5 +23,7 @@ require('./general');
 
 require('./libs');
 
+require('./format');
+
 
 module.exports = User;

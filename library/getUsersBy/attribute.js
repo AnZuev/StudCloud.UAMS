@@ -9,11 +9,12 @@ let ValidationError = require("@anzuev/studcloud.errors").ValidationError,
 
 /**
  * Get users by one key(query)
+ * @function getUsersByOneKey
  * @param query
  * @returns {promise}
  * @fulfill {User[]} - массив пользователей
  * @reject {DbError}, 204 - ничего не найдено
- * @reject {DbError}, 500 - ошибка базы данных * @function getUsersByOneKey
+ * @reject {DbError}, 500 - ошибка базы данных
  * @memberof module:UAMS~User
  */
 User.statics.getUsersByOneKey = function(query){

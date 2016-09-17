@@ -22,19 +22,24 @@ Q.async(function*(){
 			surname: "Зуев"
 		};
 		//let reg = new RegExp('^Анто');
-		//let user = yield* UAMS.getUsersByGroup(context.university, context.faculty, context.group);
+		UAMS.configure(require('./config'));
+		let users = yield* UAMS.getUsersByGroup(context.university, context.faculty, context.group);
+		let user = users[0];
+		user.pubInform.university = "57b70b3f00c19c30592d44d8";
+		user.pubInform.faculty = "57b70d09361fc08f591f8770";
+		console.log(yield* user.format());
 		//let users = yield* UAMS.getUsersByGroup(context.university, context.faculty, context.group);
 		//let counter = yield* UAMS.countNewUsersThisWeek();
 		//let user = yield* UAMS.removeUser('576eb4b1c5e3956e929cea6c');
-		UAMS.configure(require('./config'));
-		let user = yield* UAMS.createUser(authData);
+		//let user = yield* UAMS.createUser(authData);
 		//let user = yield* UAMS.getUserById("577aa872888e71863ba6261b");
-		user.block();
-		console.log(user);
-		yield* user.saveUser();
+		//user.block();
+		//console.log(user);
+		//yield* user.saveUser();
 	}catch(err){
 		throw err;
 		console.log(err);
 	}
+
 })().done();
 
