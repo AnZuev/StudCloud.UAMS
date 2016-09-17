@@ -17,6 +17,7 @@ const logger = require('../libs/logger').getLogger();
  * @this User
  * @memberof module:UAMS~User
  * @instance
+ *
  */
 function requestMailConfirmation(){
 	let key = Crypto.createHmac('sha1', Math.random() + "").update(this.auth.mail).digest("hex").toString();

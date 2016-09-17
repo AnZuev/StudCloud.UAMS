@@ -18,6 +18,7 @@ const logger = require('../libs/logger').getLogger();
  * @fulfill {User[]}
  * @reject {DbError}, 404 - пользователь не найден
  * @reject {DbError}, 500 - ошибка базы данных
+ * @private
  */
 User.statics.getUserById = function(id){
 	let deffer = Q.defer();
@@ -46,6 +47,7 @@ User.statics.getUserById = function(id){
  * @reject {DbError}, 404 - пользователь не найден
  * @reject {DbError}, 500 - ошибка базы данных
  * @returns {promise}
+ * @private
  */
 User.statics.getUserByMail = function (mail){
 	let deffer = Q.defer();
@@ -75,6 +77,7 @@ User.statics.getUserByMail = function (mail){
  * @reject {DbError}, 404 - пользователь не найден
  * @reject {DbError}, 500 - ошибка базы данных
  * @returns {promise}
+ * @private
  */
 User.statics.getUserByPhone = function(phone){
 	let deffer = Q.defer();

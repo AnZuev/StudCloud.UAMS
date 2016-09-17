@@ -44,7 +44,7 @@ User.methods.saveUser = saveUser;
  * @instance
  * @function block
  * @returns {void}
- *
+ * @private
  */
 User.methods.block = function(){
 	this.state = "Blocked";
@@ -58,6 +58,7 @@ User.methods.block = function(){
  * @static
  * @function blockUser
  * @returns {void}
+ * @private
  *
  */
 User.statics.blockUser = function*(userId){
@@ -73,6 +74,7 @@ User.statics.blockUser = function*(userId){
  * @static
  * @param userId - идентификатор пользователя
  * @returns {*|promise}
+ * @private
  */
 User.statics.removeUser = function(userId){
 	let deffer = Q.defer();
@@ -100,6 +102,7 @@ User.statics.removeUser = function(userId){
  * @this {User}
  * @instance
  * @memberof module:UAMS~User
+ * @private
  */
 function checkPassword (password){
 	return (this.encryptPassword(password) === this.auth.hashed_password);
@@ -113,6 +116,7 @@ User.methods.checkPassword = checkPassword;
  * @returns {number} - 1, 2, 3, 4
  * @this {User}
  * @instance
+ *
  *
  */
 function getAuthLevel(){

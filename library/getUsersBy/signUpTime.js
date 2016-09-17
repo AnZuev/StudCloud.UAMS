@@ -18,6 +18,7 @@ let ValidationError = require("@anzuev/studcloud.errors").ValidationError,
  * @reject {DbError}, 500 - ошибка базы данных
  * @memberof module:UAMS~User
  * @this User
+ * @private
  */
 User.statics.countUserBySignUpTime = function(age){
 	let defer = Q.defer();
@@ -40,6 +41,7 @@ User.statics.countUserBySignUpTime = function(age){
  * @reject {DbError}, 500 - ошибка базы данных
  * @memberof module:UAMS~User
  * @this User
+ * @private
  */
 User.statics.countAllUsers = function(){
 	let defer = Q.defer();

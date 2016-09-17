@@ -10,6 +10,7 @@ let ValidationError = require("@anzuev/studcloud.errors").ValidationError,
 /**
  * Get users by one key(query)
  * @function getUsersByOneKey
+ * @private
  * @param query
  * @returns {promise}
  * @fulfill {User[]} - массив пользователей
@@ -37,6 +38,7 @@ User.statics.getUsersByOneKey = function(query){
 /**
  * Get users by 2 keys
  * @param query - запрос
+ * @private
  * @returns {promise}
  * @fulfill {User[]} - массив пользователей
  * @reject {DbError}, 204 - ничего не найдено
@@ -70,6 +72,7 @@ User.statics.getUsersByTwoKeys = function(query){
  * @reject {DbError}, 204 - ничего не найдено
  * @reject {DbError}, 500 - ошибка базы данных
  * @memberof module:UAMS~User
+ * @private
  * @this User
  * @function getUsersByUniversity
  */
@@ -96,6 +99,7 @@ User.statics.getUsersByUniversity = function(university){
  * @reject {DbError}, 204 - ничего не найдено
  * @reject {DbError}, 500 - ошибка базы данных
  * @memberof module:UAMS~User
+ * @private
  * @this User
  * @function getUsersByFaculty
  */
@@ -126,6 +130,7 @@ User.statics.getUsersByFaculty = function(faculty){
  * @reject {DbError}, 204 - ничего не найдено
  * @reject {DbError}, 500 - ошибка базы данных
  * @memberof module:UAMS~User
+ * @private
  * @this User
  * @function getUsersByGroup
  */
@@ -152,6 +157,7 @@ User.statics.getUsersByGroup = function(query){
  * @reject {DbError}, 204 - ничего не найдено
  * @reject {DbError}, 500 - ошибка базы данных
  * @memberof module:UAMS~User
+ * @private
  * @this User
  * @function getUsersByYear
  */
@@ -168,6 +174,24 @@ User.statics.getUsersByYear = function(year){
 		if(err) deffer.reject(new DbError(err, 500));
 	});
 	return deffer.promise;
+};
+
+
+/**
+ * Получение статистики по университетам(сколько пользователей в каком университете)
+ * @memberof module:UAMS~User
+ * @function getStaticsByUniversity
+ * @returns {Promise}
+ */
+User.statics.getStaticsByUniversity = function(){
+	return this.aggregate([
+		{
+			$group:{
+				_id: "$pubInform.university",
+				counter:{$sum: 1}
+			}
+		}
+	]).exec();
 };
 
 

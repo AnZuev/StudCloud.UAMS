@@ -389,51 +389,27 @@
 **Access:** public  
 
 * [~User](#module_UAMS..User)
-    * _instance_
-        * [.changePhoto(photoId)](#module_UAMS..User+changePhoto)
-        * [.changeGroup(newGroup)](#module_UAMS..User+changeGroup)
-        * [.changeUniversity(newUniversity)](#module_UAMS..User+changeUniversity)
-        * [.changeFaculty(newFaculty)](#module_UAMS..User+changeFaculty)
-        * [.changeYear(newYear)](#module_UAMS..User+changeYear)
-        * [.changeName(newName)](#module_UAMS..User+changeName)
-        * [.changeSurname(newSurname)](#module_UAMS..User+changeSurname)
-        * [.format()](#module_UAMS..User+format) ⇒ <code>Object</code> &#124; <code>\*</code>
-        * [.encryptPassword(password)](#module_UAMS..User+encryptPassword) ⇒ <code>string</code>
-        * [.saveUser()](#module_UAMS..User+saveUser) ⇒ <code>user</code>
-        * [.block()](#module_UAMS..User+block) ⇒ <code>void</code>
-        * [.checkPassword(password)](#module_UAMS..User+checkPassword) ⇒ <code>boolean</code>
-        * [.getAuthLevel()](#module_UAMS..User+getAuthLevel) ⇒ <code>number</code>
-        * [.isInGroup(group)](#module_UAMS..User+isInGroup) ⇒ <code>boolean</code>
-        * [.requestMailConfirmation()](#module_UAMS..User+requestMailConfirmation) ⇒ <code>string</code>
-        * [.confirmMail(key)](#module_UAMS..User+confirmMail) ⇒ <code>boolean</code>
-        * [.requestMobileConfirmation()](#module_UAMS..User+requestMobileConfirmation) ⇒ <code>string</code>
-        * [.confirmMobile(key)](#module_UAMS..User+confirmMobile) ⇒ <code>boolean</code>
-        * [.requestPasswordChange()](#module_UAMS..User+requestPasswordChange)
-        * [.confirmPasswordToken(key)](#module_UAMS..User+confirmPasswordToken) ⇒ <code>boolean</code>
-        * [.setNewPassword(password)](#module_UAMS..User+setNewPassword) ⇒ <code>void</code>
-        * [.getContactsByOneKey(key, context)](#module_UAMS..User+getContactsByOneKey) ⇒ <code>promise</code>
-        * [.getContactsByTwoKeys(key1, key2, context)](#module_UAMS..User+getContactsByTwoKeys) ⇒ <code>promise</code>
-        * [.getContactsByContext(context)](#module_UAMS..User+getContactsByContext) ⇒ <code>promise</code>
-    * _static_
-        * [.getUserById(id)](#module_UAMS..User.getUserById) ⇒ <code>promise</code>
-        * [.getUserByMail(mail)](#module_UAMS..User.getUserByMail) ⇒ <code>promise</code>
-        * [.getUserByPhone(phone)](#module_UAMS..User.getUserByPhone) ⇒ <code>promise</code>
-        * [.blockUser()](#module_UAMS..User.blockUser) ⇒ <code>void</code>
-        * [.getUsersByOneKey(query)](#module_UAMS..User.getUsersByOneKey) ⇒ <code>promise</code>
-        * [.getUsersByTwoKeys(query)](#module_UAMS..User.getUsersByTwoKeys) ⇒ <code>promise</code>
-        * [.getUsersByUniversity(university)](#module_UAMS..User.getUsersByUniversity) ⇒ <code>promise</code>
-        * [.getUsersByFaculty(faculty)](#module_UAMS..User.getUsersByFaculty) ⇒ <code>promise</code>
-        * [.getUsersByGroup(query)](#module_UAMS..User.getUsersByGroup) ⇒ <code>promise</code>
-        * [.getUsersByYear(year)](#module_UAMS..User.getUsersByYear) ⇒ <code>promise</code>
-        * [.getUsersByMailConfirmation(skip)](#module_UAMS..User.getUsersByMailConfirmation) ⇒ <code>promise</code>
-        * [.countUsersByMailConfirmation()](#module_UAMS..User.countUsersByMailConfirmation) ⇒ <code>promise</code>
-        * [.countUsersByMobileConfirmation(skip)](#module_UAMS..User.countUsersByMobileConfirmation) ⇒ <code>promise</code>
-        * [.countUsersByMobileConfirmation()](#module_UAMS..User.countUsersByMobileConfirmation) ⇒ <code>promise</code>
-        * [.getUsersByDocumentConfirmation(skip)](#module_UAMS..User.getUsersByDocumentConfirmation) ⇒ <code>promise</code>
-        * [.countUsersByDocumentConfirmation()](#module_UAMS..User.countUsersByDocumentConfirmation) ⇒ <code>promise</code>
-        * [.getUsersByDocumentVarificationRequired(skip)](#module_UAMS..User.getUsersByDocumentVarificationRequired) ⇒ <code>promise</code>
-        * [.countUserBySignUpTime(age)](#module_UAMS..User.countUserBySignUpTime) ⇒ <code>promise</code>
-        * [.countAllUsers()](#module_UAMS..User.countAllUsers) ⇒ <code>promise</code>
+    * [.changePhoto(photoId)](#module_UAMS..User+changePhoto)
+    * [.changeGroup(newGroup)](#module_UAMS..User+changeGroup)
+    * [.changeUniversity(newUniversity)](#module_UAMS..User+changeUniversity)
+    * [.changeFaculty(newFaculty)](#module_UAMS..User+changeFaculty)
+    * [.changeYear(newYear)](#module_UAMS..User+changeYear)
+    * [.changeName(newName)](#module_UAMS..User+changeName)
+    * [.changeSurname(newSurname)](#module_UAMS..User+changeSurname)
+    * [.format()](#module_UAMS..User+format) ⇒ <code>Object</code> &#124; <code>\*</code>
+    * [.saveUser()](#module_UAMS..User+saveUser) ⇒ <code>user</code>
+    * [.getAuthLevel()](#module_UAMS..User+getAuthLevel) ⇒ <code>number</code>
+    * [.isInGroup(group)](#module_UAMS..User+isInGroup) ⇒ <code>boolean</code>
+    * [.requestMailConfirmation()](#module_UAMS..User+requestMailConfirmation) ⇒ <code>string</code>
+    * [.confirmMail(key)](#module_UAMS..User+confirmMail) ⇒ <code>boolean</code>
+    * [.requestMobileConfirmation()](#module_UAMS..User+requestMobileConfirmation) ⇒ <code>string</code>
+    * [.confirmMobile(key)](#module_UAMS..User+confirmMobile) ⇒ <code>boolean</code>
+    * [.requestPasswordChange()](#module_UAMS..User+requestPasswordChange)
+    * [.confirmPasswordToken(key)](#module_UAMS..User+confirmPasswordToken) ⇒ <code>boolean</code>
+    * [.setNewPassword(password)](#module_UAMS..User+setNewPassword) ⇒ <code>void</code>
+    * [.getContactsByOneKey(key, context)](#module_UAMS..User+getContactsByOneKey) ⇒ <code>promise</code>
+    * [.getContactsByTwoKeys(key1, key2, context)](#module_UAMS..User+getContactsByTwoKeys) ⇒ <code>promise</code>
+    * [.getContactsByContext(context)](#module_UAMS..User+getContactsByContext) ⇒ <code>promise</code>
 
 <a name="module_UAMS..User+changePhoto"></a>
 
@@ -560,19 +536,6 @@ yield* user.format()
      university: 'СПБГЭТУ Лэти'
 }
 ```
-<a name="module_UAMS..User+encryptPassword"></a>
-
-#### user.encryptPassword(password) ⇒ <code>string</code>
-Зашифровка пароля
-
-**Kind**: instance method of <code>[User](#module_UAMS..User)</code>  
-**Returns**: <code>string</code> - password - зашифрованный пароль  
-**this**: <code>{User}</code>  
-
-| Param | Description |
-| --- | --- |
-| password | пароль |
-
 <a name="module_UAMS..User+saveUser"></a>
 
 #### user.saveUser() ⇒ <code>user</code>
@@ -583,25 +546,6 @@ yield* user.format()
 - <code>DbError</code> 500, ошибка базы данных
 
 **this**: <code>{User}</code>  
-<a name="module_UAMS..User+block"></a>
-
-#### user.block() ⇒ <code>void</code>
-Блокировка пользователя(меняет состояние state на blocked);
-
-**Kind**: instance method of <code>[User](#module_UAMS..User)</code>  
-<a name="module_UAMS..User+checkPassword"></a>
-
-#### user.checkPassword(password) ⇒ <code>boolean</code>
-Check password
-
-**Kind**: instance method of <code>[User](#module_UAMS..User)</code>  
-**Returns**: <code>boolean</code> - . true - пароль верен, false - пароль неверен  
-**this**: <code>{User}</code>  
-
-| Param | Description |
-| --- | --- |
-| password | пароль для проверки |
-
 <a name="module_UAMS..User+getAuthLevel"></a>
 
 #### user.getAuthLevel() ⇒ <code>number</code>
@@ -765,278 +709,3 @@ Check password
 | --- | --- |
 | context | объект. Поддерживаемые значения - university, faculty, year, group |
 
-<a name="module_UAMS..User.getUserById"></a>
-
-#### User.getUserById(id) ⇒ <code>promise</code>
-Get user by id
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**this**: <code>User</code>  
-**Fulfill**: <code>User[]</code>  
-**Reject**: <code>DbError</code>, 404 - пользователь не найден  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| id | <code>mongoose.Types.ObjectId</code> | идентификатор пользователя |
-
-<a name="module_UAMS..User.getUserByMail"></a>
-
-#### User.getUserByMail(mail) ⇒ <code>promise</code>
-Get user by mail
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**this**: <code>User</code>  
-**Fulfill**: <code>User[]</code>  
-**Reject**: <code>DbError</code>, 404 - пользователь не найден  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| mail | <code>string</code> | почтовый адрес |
-
-<a name="module_UAMS..User.getUserByPhone"></a>
-
-#### User.getUserByPhone(phone) ⇒ <code>promise</code>
-get user by phone
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**this**: <code>User</code>  
-**Fulfill**: <code>User[]</code>  
-**Reject**: <code>DbError</code>, 404 - пользователь не найден  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| phone | <code>string</code> | номер мобильного телефона |
-
-<a name="module_UAMS..User.blockUser"></a>
-
-#### User.blockUser() ⇒ <code>void</code>
-Блокировка пользователя(меняет состояние state на blocked) + сохранение
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-<a name="module_UAMS..User.getUsersByOneKey"></a>
-
-#### User.getUsersByOneKey(query) ⇒ <code>promise</code>
-Get users by one key(query)
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**Fulfill**: <code>User[]</code> - массив пользователей  
-**Reject**: <code>DbError</code>, 204 - ничего не найдено  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-
-| Param |
-| --- |
-| query | 
-
-<a name="module_UAMS..User.getUsersByTwoKeys"></a>
-
-#### User.getUsersByTwoKeys(query) ⇒ <code>promise</code>
-Get users by 2 keys
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**this**: <code>User</code>  
-**Fulfill**: <code>User[]</code> - массив пользователей  
-**Reject**: <code>DbError</code>, 204 - ничего не найдено  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-
-| Param | Description |
-| --- | --- |
-| query | запрос |
-
-<a name="module_UAMS..User.getUsersByUniversity"></a>
-
-#### User.getUsersByUniversity(university) ⇒ <code>promise</code>
-Получение пользователей по университету
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**this**: <code>User</code>  
-**Fulfill**: <code>User[]</code> - массив пользователей  
-**Reject**: <code>DbError</code>, 204 - ничего не найдено  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-
-| Param | Description |
-| --- | --- |
-| university | идентификатор университета |
-
-<a name="module_UAMS..User.getUsersByFaculty"></a>
-
-#### User.getUsersByFaculty(faculty) ⇒ <code>promise</code>
-Получение пользователей по факультету
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**this**: <code>User</code>  
-**Fulfill**: <code>User[]</code> - массив пользователей  
-**Reject**: <code>DbError</code>, 204 - ничего не найдено  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-
-| Param | Description |
-| --- | --- |
-| faculty | идентификатор факультета |
-
-<a name="module_UAMS..User.getUsersByGroup"></a>
-
-#### User.getUsersByGroup(query) ⇒ <code>promise</code>
-Получение пользователя по группе
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**this**: <code>User</code>  
-**Fulfill**: <code>User[]</code> - массив пользователей  
-**Reject**: <code>DbError</code>, 204 - ничего не найдено  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-
-| Param | Description |
-| --- | --- |
-| query | запрос |
-
-**Properties**
-
-| Name | Description |
-| --- | --- |
-| university | идентификатор университета |
-| faculty | идентификатор факультета |
-| group | группа |
-
-<a name="module_UAMS..User.getUsersByYear"></a>
-
-#### User.getUsersByYear(year) ⇒ <code>promise</code>
-Получение пользователей по курсу
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**this**: <code>User</code>  
-**Fulfill**: <code>User[]</code> - массив пользователей  
-**Reject**: <code>DbError</code>, 204 - ничего не найдено  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-
-| Param | Description |
-| --- | --- |
-| year | значение курса( 1-6) |
-
-<a name="module_UAMS..User.getUsersByMailConfirmation"></a>
-
-#### User.getUsersByMailConfirmation(skip) ⇒ <code>promise</code>
-Получение пользователей, у которых подтверждена почта
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**Throws**:
-
-- <code>ValidationError</code> , 400 - значение skip не может быть меньше нуля
-
-**this**: <code>User</code>  
-**Fulfill**: <code>User[]</code> - массив пользователей  
-**Reject**: <code>DbError</code>, 204 - ничего не найдено  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-
-| Param | Description |
-| --- | --- |
-| skip | сколько пропустить сначала |
-
-<a name="module_UAMS..User.countUsersByMailConfirmation"></a>
-
-#### User.countUsersByMailConfirmation() ⇒ <code>promise</code>
-Подсчет пользователей с подтвержденной почтой
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**this**: <code>User</code>  
-**Fulfill**: <code>number</code> - количетсво пользователей  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-<a name="module_UAMS..User.countUsersByMobileConfirmation"></a>
-
-#### User.countUsersByMobileConfirmation(skip) ⇒ <code>promise</code>
-Получение пользователей, у которых подтвержден номер телефона
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**Throws**:
-
-- <code>ValidationError</code> , 400 - значение skip не может быть меньше нуля
-
-**this**: <code>User</code>  
-**Fulfill**: <code>User[]</code> - массив пользователей  
-**Reject**: <code>DbError</code>, 204 - ничего не найдено  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-
-| Param | Description |
-| --- | --- |
-| skip | сколько пропустить сначала |
-
-<a name="module_UAMS..User.countUsersByMobileConfirmation"></a>
-
-#### User.countUsersByMobileConfirmation() ⇒ <code>promise</code>
-Подсчет пользователей с подтвержденным номером телефона
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**this**: <code>User</code>  
-**Fulfill**: <code>number</code> - количетсво пользователей  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-<a name="module_UAMS..User.getUsersByDocumentConfirmation"></a>
-
-#### User.getUsersByDocumentConfirmation(skip) ⇒ <code>promise</code>
-Получение пользователей, у которых подтвержден документ
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**Throws**:
-
-- <code>ValidationError</code> , 400 - значение skip не может быть меньше нуля
-
-**this**: <code>User</code>  
-**Fulfill**: <code>User[]</code> - массив пользователей  
-**Reject**: <code>DbError</code>, 204 - ничего не найдено  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-
-| Param | Description |
-| --- | --- |
-| skip | сколько пропустить сначала |
-
-<a name="module_UAMS..User.countUsersByDocumentConfirmation"></a>
-
-#### User.countUsersByDocumentConfirmation() ⇒ <code>promise</code>
-Подсчет пользователей с подтвержденным документом
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**this**: <code>User</code>  
-**Fulfill**: <code>number</code> - количетсво пользователей  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-<a name="module_UAMS..User.getUsersByDocumentVarificationRequired"></a>
-
-#### User.getUsersByDocumentVarificationRequired(skip) ⇒ <code>promise</code>
-Получение пользователей, у которых ожидается варификация документа
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**Throws**:
-
-- <code>ValidationError</code> , 400 - значение skip не может быть меньше нуля
-
-**this**: <code>User</code>  
-**Fulfill**: <code>User[]</code> - массив пользователей  
-**Reject**: <code>DbError</code>, 204 - ничего не найдено  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-**Alert**: - метод не работает  
-
-| Param | Description |
-| --- | --- |
-| skip | сколько пропустить сначала |
-
-<a name="module_UAMS..User.countUserBySignUpTime"></a>
-
-#### User.countUserBySignUpTime(age) ⇒ <code>promise</code>
-Подсчет сколько пользователей было зарегистрировано начиная с какого-то времени
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**this**: <code>User</code>  
-**Fulfill**: <code>number</code> - количетсво пользователей  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| age | <code>Date</code> | за какой период получать пользователей |
-
-<a name="module_UAMS..User.countAllUsers"></a>
-
-#### User.countAllUsers() ⇒ <code>promise</code>
-Подсчет сколько пользователей было зарегистрировано начиная с какого-то времени
-
-**Kind**: static method of <code>[User](#module_UAMS..User)</code>  
-**this**: <code>User</code>  
-**Fulfill**: <code>number</code> - количетсво пользователей  
-**Reject**: <code>DbError</code>, 500 - ошибка базы данных  

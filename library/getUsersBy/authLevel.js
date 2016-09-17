@@ -23,6 +23,7 @@ let perPage = 20;
  * @memberof module:UAMS~User
  * @this User
  * @function getUsersByMailConfirmation
+ * @private
  */
 
 User.statics.getUsersByMailConfirmation = function(skip){
@@ -58,6 +59,7 @@ User.statics.getUsersByMailConfirmation = function(skip){
  * @memberof module:UAMS~User
  * @this User
  * @function countUsersByMailConfirmation
+ * @private
  * */
 User.statics.countUsersByMailConfirmation = function(){
 
@@ -91,6 +93,7 @@ User.statics.countUsersByMailConfirmation = function(){
  * @memberof module:UAMS~User
  * @this User
  * @function countUsersByMobileConfirmation
+ * @private
  */
 User.statics.getUsersByMobileConfirmation = function(skip){
 
@@ -123,6 +126,7 @@ User.statics.getUsersByMobileConfirmation = function(skip){
  * @memberof module:UAMS~User
  * @this User
  * @function countUsersByMobileConfirmation
+ * @private
  * */
 User.statics.countUsersByMobileConfirmation = function(){
 
@@ -154,6 +158,7 @@ User.statics.countUsersByMobileConfirmation = function(){
  * @memberof module:UAMS~User
  * @this User
  * @function getUsersByDocumentConfirmation
+ * @private
  */
 User.statics.getUsersByDocumentConfirmation = function(skip){
 
@@ -186,6 +191,7 @@ User.statics.getUsersByDocumentConfirmation = function(skip){
  * @memberof module:UAMS~User
  * @this User
  * @function countUsersByDocumentConfirmation
+ * @private
  * */
 User.statics.countUsersByDocumentConfirmation = function(){
 
@@ -219,6 +225,7 @@ User.statics.countUsersByDocumentConfirmation = function(){
  * @this User
  * @alert - метод не работает
  * @function getUsersByDocumentVarificationRequired
+ * @private
  */
 //TODO продумать каким образом понимать, что требуется проверка документа
 User.statics.getUsersByDocumentVarificationRequired = function(skip){

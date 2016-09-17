@@ -337,6 +337,15 @@ UAMS.configure = function(config){
 	};
 
 	/**
+	 * Получение статистики сколько в каком универе пользователей
+	 * @returns {*}
+	 */
+	UAMS.getUsersStaticsPerUniversity = function*(){
+		return yield UAMS._Users.getStaticsByUniversity();
+	}
+
+
+	/**
 	 * Создание нового пользователя
 	 * @param authData - данные для авторизации. Пропирти можно увидеть в пункте properties
 	 * @property mail - почтовый адрес

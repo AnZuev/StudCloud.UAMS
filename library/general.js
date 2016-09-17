@@ -19,6 +19,7 @@ const logger = require('../libs/logger').getLogger();
  * @instance
  * @this {User}
  * @returns {string} password - зашифрованный пароль
+ * @private
  */
 User.methods.encryptPassword = function(password){
 	return Crypto.createHmac('sha1',this.auth.salt).update(password + "").digest("hex");
